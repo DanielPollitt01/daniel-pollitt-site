@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy - Resume Website</title>
+    <link rel="stylesheet" href="styles.css?v=1.4">
+</head>
+<body>
+    <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
+        <div class="middle-line"></div>
+    </div>
+    <div class="nav-menu" id="navMenu" role="menu">
+        <ul>
+            <li role="none"><a href="index.html" role="menuitem">Daniel</a></li>
+            <li role="none"><a href="about.html" role="menuitem">About</a></li>
+            <li role="none"><a href="projects.html" role="menuitem">Projects</a></li>
+            <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+            <li role="none"><a href="philosophy.html" role="menuitem" class="active">Philosophy</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const navSymbol = document.getElementById('navSymbol');
+        const navMenu = document.getElementById('navMenu');
+
+        navSymbol.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navSymbol.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        navSymbol.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navSymbol.click();
+            }
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navSymbol.focus();
+            }
+        });
+    </script>
+
+    <div class="unified-container">
+        <!-- Name Section - Full Width -->
+        <div class="unified-name-section">
+            <div class="name">Daniel Pollitt</div>
+            <div class="subtitle">philosophy</div>
+        </div>
+
+        <!-- Quote Title Section - Split Layout -->
+        <div class="unified-quote-section">
+            <div class="empty-left"></div>
+            <div class="quote-title-right">
+                <h2>Core principles and beliefs</h2>
+            </div>
+        </div>
+
+        <!-- Content Section - Interactive List Layout -->
+        <div class="unified-content-section">
+            <!-- Left: Philosophy Principles List -->
+            <div class="left-content">
+                <ol class="interactive-list">
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="continuous-learning">Continuous Learning</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="minimalist-design">Minimalist Design</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="user-centered">User-Centered Approach</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="sustainable-solutions">Sustainable Solutions</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="knowledge-sharing">Knowledge Sharing</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="practical-innovation">Practical Innovation</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="ethical-technology">Ethical Technology</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-principle="thoughtful-craftsmanship">Thoughtful Craftsmanship</a>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Right: Philosophy Explanation with Image Display -->
+            <div class="right-blurb">
+                <h2>Personal Philosophy</h2>
+                <div class="divider"></div>
+                <p>Technology should serve human needs with elegance and simplicity. Every line of code, every design decision, and every interaction should be deliberate and meaningful. The best solutions emerge from understanding problems deeply, questioning assumptions, and creating with intention.</p>
+
+                <!-- Philosophy Image Display -->
+                <div class="hover-image-container">
+                    <img id="philosophy-image" class="hover-image-display" src="" alt="Philosophy principle visualization">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive philosophy hover functionality
+        const philosophyImage = document.getElementById('philosophy-image');
+        const philosophyLinks = document.querySelectorAll('.interactive-list-item a');
+
+        // Hide image initially
+        philosophyImage.style.opacity = '0';
+
+        philosophyLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                // Show placeholder for now
+                philosophyImage.style.opacity = '1';
+                philosophyImage.src = '';
+                philosophyImage.style.backgroundColor = '#e5e7eb';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                // Hide image immediately
+                philosophyImage.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>

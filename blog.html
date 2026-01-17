@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Resume Website</title>
+    <link rel="stylesheet" href="styles.css?v=1.4">
+</head>
+<body>
+    <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
+        <div class="middle-line"></div>
+    </div>
+    <div class="nav-menu" id="navMenu" role="menu">
+        <ul>
+            <li role="none"><a href="index.html" role="menuitem">Daniel</a></li>
+            <li role="none"><a href="about.html" role="menuitem">About</a></li>
+            <li role="none"><a href="projects.html" role="menuitem">Projects</a></li>
+            <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+            <li role="none"><a href="philosophy.html" role="menuitem">Philosophy</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const navSymbol = document.getElementById('navSymbol');
+        const navMenu = document.getElementById('navMenu');
+
+        navSymbol.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navSymbol.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        navSymbol.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navSymbol.click();
+            }
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navSymbol.focus();
+            }
+        });
+    </script>
+
+    <div class="unified-container">
+        <!-- Name Section - Full Width -->
+        <div class="unified-name-section">
+            <div class="name">Daniel Pollitt</div>
+            <div class="subtitle">blog</div>
+        </div>
+
+        <!-- Quote Title Section - Split Layout -->
+        <div class="unified-quote-section">
+            <div class="empty-left"></div>
+            <div class="quote-title-right">
+                <h2>Thoughts and reflections</h2>
+            </div>
+        </div>
+
+        <!-- Content Section - Interactive List Layout -->
+        <div class="unified-content-section">
+            <!-- Left: Blog Posts List -->
+            <div class="left-content">
+                <ol class="interactive-list">
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="technical-insights">Technical Insights</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="project-reflections">Project Reflections</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="industry-trends">Industry Trends</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="learning-journey">Learning Journey</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="tool-reviews">Tool Reviews</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="best-practices">Best Practices</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="design-patterns">Design Patterns</a>
+                    </li>
+                    <li class="interactive-list-item">
+                        <a href="#" data-post="future-thoughts">Future Thoughts</a>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Right: Blog Philosophy with Image Display -->
+            <div class="right-blurb">
+                <h2>Writing Philosophy</h2>
+                <div class="divider"></div>
+                <p>This blog serves as a digital garden for thoughts on technology, design, and continuous learning. Each post represents a moment of reflection, capturing insights from daily work, project challenges, and the ever-evolving landscape of digital creation.</p>
+
+                <!-- Blog Post Image Display -->
+                <div class="hover-image-container">
+                    <img id="post-image" class="hover-image-display" src="" alt="Blog post visualization">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive blog posts hover functionality
+        const postImage = document.getElementById('post-image');
+        const postLinks = document.querySelectorAll('.interactive-list-item a');
+
+        // Hide image initially
+        postImage.style.opacity = '0';
+
+        postLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                // Show placeholder for now
+                postImage.style.opacity = '1';
+                postImage.src = '';
+                postImage.style.backgroundColor = '#e5e7eb';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                // Hide image immediately
+                postImage.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>

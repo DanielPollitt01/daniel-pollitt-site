@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Daniel Pollitt</title>
+    <link rel="stylesheet" href="styles.css?v=1.3">
+
+</head>
+    <body class="projects-page">
+    <div class="projects-container">
+        <!-- Name Section - Full Width -->
+        <div class="name-section">
+            <div class="name">Daniel Pollitt</div>
+            <div class="subtitle">projects</div>
+        </div>
+
+        <!-- Quote Title Section - Split Layout -->
+        <div class="quote-title-section">
+            <div class="empty-left"></div>
+            <div class="quote-title-right">
+                <h2>Look to ones works</h2>
+            </div>
+        </div>
+
+        <!-- Content Section - Split Layout -->
+        <div class="content-section">
+            <!-- Left: Projects List -->
+            <div class="projects-content">
+                <ol class="project-list">
+                    <li class="project-item">
+                        <a href="index.html" data-project="this-site">This site</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-02">Project Alpha</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-03">Project Beta</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-04">Project Gamma</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-05">Project Delta</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-06">Project Epsilon</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-07">Project Zeta</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-08">Project Eta</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-09">Project Theta</a>
+                    </li>
+                    <li class="project-item">
+                        <a href="#" data-project="project-10">Project Iota</a>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Right: Blurb Content with Image Display -->
+            <div class="blurb-content">
+                <p>To understand a person look to works that they have preoccupied their time with, every minute spent here has been a conscious vote to not spend it elsewhere and all we really have is time.</p>
+
+                <!-- Image Display -->
+                <div class="image-section">
+                    <img id="project-image" class="project-image" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Symbol and Menu -->
+    <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
+        <div class="middle-line"></div>
+    </div>
+    <div class="nav-menu" id="navMenu" role="menu">
+        <ul>
+            <li role="none"><a href="index.html" role="menuitem">Daniel</a></li>
+            <li role="none"><a href="about.html" role="menuitem">About</a></li>
+            <li role="none"><a href="projects.html" role="menuitem">Projects</a></li>
+            <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+            <li role="none"><a href="philosophy.html" role="menuitem">Philosophy</a></li>
+        </ul>
+    </div>
+    <script>
+        // Simple Navigation menu functionality - click only
+        const navSymbol = document.getElementById('navSymbol');
+        const navMenu = document.getElementById('navMenu');
+
+        // Click functionality - toggle menu immediately
+        navSymbol.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navSymbol.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Keyboard support
+        navSymbol.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navSymbol.click();
+            }
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navSymbol.focus();
+            }
+        });
+
+        // Project hover image functionality
+        const projectImage = document.getElementById('project-image');
+        const projectLinks = document.querySelectorAll('.project-item a');
+
+        // Hide image initially
+        projectImage.style.opacity = '0';
+
+        projectLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                // Show grey placeholder for now
+                projectImage.style.opacity = '1';
+                projectImage.src = '';
+                projectImage.style.backgroundColor = '#e5e7eb';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                // Hide image immediately (no transition)
+                projectImage.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>

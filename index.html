@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Website - Home</title>
+    <link rel="stylesheet" href="styles.css?v=1.4">
+</head>
+    <body>
+    <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
+        <div class="middle-line"></div>
+    </div>
+    <div class="nav-menu" id="navMenu" role="menu">
+        <ul>
+            <li role="none"><a href="index.html" role="menuitem" class="active">Daniel</a></li>
+            <li role="none"><a href="about.html" role="menuitem">About</a></li>
+            <li role="none"><a href="projects.html" role="menuitem">Projects</a></li>
+            <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+            <li role="none"><a href="philosophy.html" role="menuitem">Philosophy</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const navSymbol = document.getElementById('navSymbol');
+        const navMenu = document.getElementById('navMenu');
+
+        navSymbol.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navSymbol.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        navSymbol.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navSymbol.click();
+            }
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navSymbol.focus();
+            }
+        });
+    </script>
+
+    <div class="unified-container">
+        <!-- Name Section - Full Width -->
+        <div class="unified-name-section">
+            <div class="name">Daniel Pollitt</div>
+            <div class="subtitle">home</div>
+        </div>
+
+        <!-- Content Section - Traditional Layout -->
+        <div class="unified-content-section">
+            <div class="traditional-content">
+                <header>
+                    <h1>Hello, my friend. Stay awhile, and read.</h1>
+                </header>
+                
+                <section>
+                    <h2>About This Site</h2>
+                    <p>This minimalist website showcases my professional work, projects, and thoughts. Navigate through the sections above to explore:</p>
+                    
+                    <ul>
+                        <li><strong>About:</strong> My background and accomplishments</li>
+                        <li><strong>Projects:</strong> Current and completed work</li>
+                        <li><strong>Blog:</strong> Weekly thoughts and insights</li>
+                        <li><strong>Philosophy:</strong> My approach and mindset</li>
+                    </ul>
+                    
+                    <h2>Design Philosophy</h2>
+                    <p>The site is designed with a clean, minimalist aesthetic to ensure readability and focus on content. The layout provides space for key information while maintaining a clean reading experience.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

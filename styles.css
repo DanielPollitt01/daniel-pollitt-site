@@ -319,10 +319,7 @@ a {
       font-size: 1rem;
     }
 
-    /* Projects page specific name-section mobile fix */
-    body.projects-page .unified-name-section {
-      margin-left: 2rem;
-    }
+    
 
     .quote-title-section {
       grid-template-columns: 1fr;
@@ -517,15 +514,10 @@ a {
   align-items: baseline;
   justify-content: flex-start;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 0;
   margin-bottom: 1rem;
   text-align: left;
   margin-left: 0;
-}
-
-/* Projects page specific name-section adjustment */
-body.projects-page .unified-name-section {
-  margin-top: 0;
 }
 
 /* Universal Container - Mirrors .projects-container */

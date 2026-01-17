@@ -518,6 +518,11 @@ a {
   margin-left: 0;
 }
 
+/* Projects page specific name-section adjustment */
+body.projects-page .unified-name-section {
+  margin-top: 0;
+}
+
 /* Universal Container - Mirrors .projects-container */
 /* === UNIFIED CONTAINER SYSTEM === */
 /* Replaces both .projects-container and unified-container */

@@ -8,15 +8,15 @@
 
 </head>
     <body class="projects-page">
-    <div class="projects-container">
+    <div class="unified-container">
         <!-- Name Section - Full Width -->
-        <div class="name-section">
+        <div class="unified-name-section">
             <div class="name">Daniel Pollitt</div>
             <div class="subtitle">projects</div>
         </div>
 
         <!-- Quote Title Section - Split Layout -->
-        <div class="quote-title-section">
+        <div class="unified-quote-section">
             <div class="empty-left"></div>
             <div class="quote-title-right">
                 <h2>Look to ones works</h2>
@@ -24,50 +24,50 @@
         </div>
 
         <!-- Content Section - Split Layout -->
-        <div class="content-section">
+        <div class="unified-content-section">
             <!-- Left: Projects List -->
-            <div class="projects-content">
-                <ol class="project-list">
-                    <li class="project-item">
+            <div class="left-content">
+                <ol class="interactive-list">
+                    <li class="interactive-list-item">
                         <a href="index.html" data-project="this-site">This site</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-02">Project Alpha</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-03">Project Beta</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-04">Project Gamma</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-05">Project Delta</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-06">Project Epsilon</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-07">Project Zeta</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-08">Project Eta</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-09">Project Theta</a>
                     </li>
-                    <li class="project-item">
+                    <li class="interactive-list-item">
                         <a href="#" data-project="project-10">Project Iota</a>
                     </li>
                 </ol>
             </div>
 
             <!-- Right: Blurb Content with Image Display -->
-            <div class="blurb-content">
+            <div class="right-blurb">
                 <p>To understand a person look to works that they have preoccupied their time with, every minute spent here has been a conscious vote to not spend it elsewhere and all we really have is time.</p>
 
                 <!-- Image Display -->
-                <div class="image-section">
-                    <img id="project-image" class="project-image" src="" alt="">
+                <div class="hover-image-container">
+                    <img id="project-image" class="hover-image-display" src="" alt="">
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@
 
         // Project hover image functionality
         const projectImage = document.getElementById('project-image');
-        const projectLinks = document.querySelectorAll('.project-item a');
+        const projectLinks = document.querySelectorAll('.interactive-list-item a');
 
         // Hide image initially
         projectImage.style.opacity = '0';

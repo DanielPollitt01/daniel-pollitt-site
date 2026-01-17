@@ -225,54 +225,13 @@ a {
     margin-left: 0;
   }
 
-  /* Create full-height right column layout for alignment */
+  /* Hide old layout for non-projects pages when using unified */
   body:not(.projects-page) .main-container {
-    display: grid;
-    grid-template-columns: 1fr 20fr;
-    gap: 0;
-    min-width: 100px;
-    margin: 0 auto;
-    min-height: calc(100vh - 80px);
+    display: none;
   }
 
-  /* Right column containing name and content grid */
-  body:not(.projects-page) .right-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Position name-section at top of right column */
-  body:not(.projects-page) .name-section {
-    margin: 0 0 1rem 0;
-    padding-left: 2rem;
-  }
-
-  /* Keep content-grid in right column with original padding */
-  body:not(.projects-page) .content-grid {
-    padding: 0 2rem;
-    margin: 0;
-    max-width: none;
-  }
-
-  /* Left column - empty full-height spacer for alignment */
-  body:not(.projects-page) .left-spacer {
-    min-height: 100vh;
-    position: sticky;
-    top: 0;
-  }
-
-  body.projects-page .name-section {
-    max-width: 1400px;
-    margin-left: 3rem;
-  }
-
-  /* Adjust container margins for name-section positioning */
+  /* Container margin adjustments */
   body:not(.projects-page) .main-container {
-    margin-top: 6rem;
-  }
-
-  body.projects-page .projects-container {
-    padding-top: 0;
     margin-top: 6rem;
   }
 
@@ -281,135 +240,19 @@ a {
     font-weight: 400;
   }
 
-  .projects-container {
-    display: grid;
-    grid-template-rows: auto auto auto;
-    min-height: 0vh;
-    padding: 1rem 3rem 3rem 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
+  /* Projects page margin top */
+  body.projects-page .projects-container {
+    margin-top: 6rem;
   }
 
-  body.projects-page {
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-white);
-  }
+  
 
-  body.projects-page .main-container {
-    display: none;
-  }
-
-  body.projects-page .content-grid {
-    display: none;
-  }
-
-  /* Projects Page Specific Styles */
-  .quote-title-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 1rem;
-  }
-
-  .quote-title-right {
-    display: flex;
-    align-items: center;
-  }
-
-  .quote-title-right h2 {
-    color: var(--green-primary);
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin: 0;
-  }
-
-  .content-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  .projects-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blurb-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blurb-content h2 {
-    color: var(--green-primary);
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .blurb-content .divider {
-    border-bottom: 1px solid var(--border-light);
-    margin: 0.5rem 0 1rem 0;
-  }
-
-  .blurb-content p {
-    color: var(--text-dark);
-    font-size: 0.8rem;
-    line-height: 1.4;
-    font-style: italic;
-    max-width: 90%;
-  }
-
-  .project-list {
-    counter-reset: project-counter;
-    column-count: 2;
-    column-gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .project-item {
-    margin-bottom: 1rem;
-    break-inside: avoid;
-    font-size: 0.9rem;
-  }
-
-  .project-item::before {
-    counter-increment: project-counter;
-    content: counter(project-counter, decimal-leading-zero);
-    color: var(--green-primary);
-    font-weight: 500;
-    margin-right: 0.75rem;
-    font-size: 0.7rem;
-  }
-
-  .project-item a {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.15s ease;
-  }
-
-  .project-item a:hover {
-    color: var(--green-primary);
-    text-decoration: underline;
-  }
-
+  /* Legacy alias for image-section */
   .image-section {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     position: relative;
-  }
-
-  .project-image {
-    width: 100%;
-    height: 200px;
-    background-color: #e5e7eb;
-    border: 2px solid var(--border-light);
-    opacity: 0;
-    object-fit: cover;
-    transition: opacity 0.1s ease;
   }
 
   .back-link {
@@ -428,14 +271,44 @@ a {
     text-decoration: underline;
   }
 
-  /* Projects Page Responsive Design */
+/* Unified Layout Responsive Design */
   @media (max-width: 768px) {
-    .projects-container {
+    .unified-container, .projects-container {
       grid-template-rows: auto auto auto;
       padding: 2rem;
       height: auto;
       min-height: 100vh;
     }
+
+    .name-section, .unified-name-section {
+      font-size: 1.5rem;
+      margin-left: 2rem;
+    }
+
+    .name-section .subtitle, .unified-name-section .subtitle {
+      font-size: 1rem;
+    }
+
+    .unified-quote-section, .quote-title-section {
+      grid-template-columns: 1fr;
+    }
+
+    .unified-content-section, .content-section {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .interactive-list, .project-list {
+      column-count: 1;
+    }
+
+    .back-link {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      margin-top: 2rem;
+    }
+  }
 
     .name-section, .unified-name-section {
       font-size: 1.5rem;
@@ -502,38 +375,13 @@ a {
     letter-spacing: 0.05em;
   }
 
-  /* Responsive design for the new grid layout */
-  @media (max-width: 768px) {
-    body:not(.projects-page) .main-container {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
+  
 
-    body:not(.projects-page) .left-spacer {
-      display: none;
-    }
-
-    body:not(.projects-page) .name-section {
-      padding-left: 2rem;
-    }
-
-    body:not(.projects-page) .content-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-    
-    .sidebar {
-      position: static;
-      order: 2;
-    }
-    
-    .main-content {
-      order: 1;
-    }
+  /* Hide old layout when using unified */
+  body:not(.projects-page) .main-container {
+    display: none;
   }
 
-  /* Page-specific fixes for projects page */
   body.projects-page .main-container {
     display: none;
   }
@@ -611,17 +459,7 @@ a {
 .mb-2 { margin-bottom: 2rem; }
 .mb-3 { margin-bottom: 3rem; }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  body:not(.projects-page) .content-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-  
-  body:not(.projects-page) .name-section {
-    padding-left: 1rem;
-  }
+
   
   .sidebar {
     position: static;
@@ -681,7 +519,19 @@ a {
 }
 
 /* Universal Container - Mirrors .projects-container */
+/* === UNIFIED CONTAINER SYSTEM === */
+/* Replaces both .projects-container and unified-container */
 .unified-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  min-height: 0vh;
+  padding: 1rem 3rem 3rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Legacy support - keep projects-container as alias */
+.projects-container {
   display: grid;
   grid-template-rows: auto auto auto;
   min-height: 0vh;
@@ -700,7 +550,8 @@ body:not(.projects-page) .main-container {
   display: none;
 }
 
-/* Universal Quote Section - Mirrors .quote-title-section */
+/* === UNIFIED QUOTE SECTION === */
+/* Replaces both .quote-title-section and unified-quote-section */
 .unified-quote-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -723,7 +574,27 @@ body:not(.projects-page) .main-container {
   margin: 0;
 }
 
-/* Universal Content Section - Mirrors .content-section */
+/* Legacy support - keep quote-title-section as alias */
+.quote-title-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.quote-title-right {
+  display: flex;
+  align-items: center;
+}
+
+.quote-title-right h2 {
+  color: var(--green-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* === UNIFIED CONTENT SECTION === */
+/* Replaces both .content-section and unified-content-section */
 .unified-content-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -760,7 +631,45 @@ body:not(.projects-page) .main-container {
   max-width: 90%;
 }
 
-/* Interactive List System - Mirrors .project-list */
+/* Legacy support - keep content-section as alias */
+.content-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.projects-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.blurb-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.blurb-content h2 {
+  color: var(--green-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.blurb-content .divider {
+  border-bottom: 1px solid var(--border-light);
+  margin: 0.5rem 0 1rem 0;
+}
+
+.blurb-content p {
+  color: var(--text-dark);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  font-style: italic;
+  max-width: 90%;
+}
+
+/* === UNIFIED INTERACTIVE LIST SYSTEM === */
+/* Replaces both .project-list and .interactive-list */
 .interactive-list {
   counter-reset: interactive-counter;
   column-count: 2;
@@ -797,7 +706,45 @@ body:not(.projects-page) .main-container {
   text-decoration: underline;
 }
 
-/* Hover Image Display - Mirrors .project-image */
+/* Legacy support - keep project-list as alias for interactive-list */
+.project-list {
+  counter-reset: interactive-counter;
+  column-count: 2;
+  column-gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-item {
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  font-size: 0.9rem;
+}
+
+.project-item::before {
+  counter-increment: interactive-counter;
+  content: counter(interactive-counter, decimal-leading-zero);
+  color: var(--green-primary);
+  font-weight: 500;
+  margin-right: 0.75rem;
+  font-size: 0.7rem;
+}
+
+.project-item a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.15s ease;
+}
+
+.project-item a:hover {
+  color: var(--green-primary);
+  text-decoration: underline;
+}
+
+/* === UNIFIED HOVER IMAGE DISPLAY === */
+/* Replaces both .project-image and .hover-image-display */
 .hover-image-container {
   display: flex;
   align-items: flex-start;
@@ -806,6 +753,17 @@ body:not(.projects-page) .main-container {
 }
 
 .hover-image-display {
+  width: 100%;
+  height: 200px;
+  background-color: #e5e7eb;
+  border: 2px solid var(--border-light);
+  opacity: 0;
+  object-fit: cover;
+  transition: opacity 0.1s ease;
+}
+
+/* Legacy support - keep project-image as alias */
+.project-image {
   width: 100%;
   height: 200px;
   background-color: #e5e7eb;

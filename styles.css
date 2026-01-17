@@ -319,6 +319,11 @@ a {
       font-size: 1rem;
     }
 
+    /* Projects page specific name-section mobile fix */
+    body.projects-page .unified-name-section {
+      margin-left: 2rem;
+    }
+
     .quote-title-section {
       grid-template-columns: 1fr;
       margin-bottom: 1rem;

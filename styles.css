@@ -225,10 +225,7 @@ a {
     margin-left: 0;
   }
 
-  /* Hide old layout for non-projects pages when using unified */
-  body:not(.projects-page) .main-container {
-    display: none;
-  }
+
 
   /* Container margin adjustments */
   body:not(.projects-page) .main-container {
@@ -241,9 +238,7 @@ a {
   }
 
   /* Projects page margin top */
-  body.projects-page .projects-container {
-    margin-top: 6rem;
-  }
+  
 
   
 
@@ -384,13 +379,7 @@ a {
     display: none;
   }
 
-  body.projects-page .main-container {
-    display: none;
-  }
-
-  body.projects-page .content-grid {
-    display: none;
-  }
+  
 
   /* Main Content */
 .main-content {
@@ -542,14 +531,10 @@ a {
   margin: 0 auto;
 }
 
-/* Apply unified layout to non-projects pages */
-body:not(.projects-page) .unified-container {
-  margin-top: 6rem;
-}
-
-/* Hide old layout for non-projects pages when using unified */
-body:not(.projects-page) .main-container {
-  display: none;
+/* === PRECISE UNIFIED POSITIONING === */
+/* Single container rule for all pages */
+.unified-container {
+  margin: 10rem auto 0; /* 10cm from browser top, auto horizontal, no bottom */
 }
 
 /* === UNIFIED QUOTE SECTION === */

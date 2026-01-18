@@ -193,8 +193,32 @@
                 
                 if (postId && blogPosts[postId]) {
                     displayBlogPost(postId);
+                    // Update URL for shareable link
+                    const url = new URL(window.location);
+                    url.searchParams.set('post', postId);
+                    window.history.pushState({}, '', url);
                 }
             });
+        });
+
+        // Check for URL parameter on page load
+        function loadPostFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('post');
+            
+            if (postId && blogPosts[postId]) {
+                displayBlogPost(postId);
+                // Highlight the active link
+                const activeLink = document.querySelector(`[data-post="${postId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-post');
+                }
+            }
+        }
+
+        // Load post from URL when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPostFromURL();
         });
 
         function displayBlogPost(postId) {

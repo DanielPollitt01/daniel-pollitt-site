@@ -68,6 +68,9 @@
             <div class="left-content">
                 <ol class="interactive-list">
                     <li class="interactive-list-item">
+                        <a href="#" data-post="6-months-windows-free" data-image="omarchy_logo.jpg">I am now 6 months windows free and only barely feeling the itch</a>
+                    </li>
+                    <li class="interactive-list-item">
                         <a href="#" data-post="technical-insights">Technical Insights</a>
                     </li>
                     <li class="interactive-list-item">
@@ -106,27 +109,124 @@
         </div>
     </div>
 
+    <!-- Blog Post Content Area -->
+    <div id="blog-post-container" class="blog-post-container" style="display: none;">
+        <div class="blog-post-content">
+            <!-- Blog posts will be dynamically loaded here -->
+        </div>
+    </div>
+
     <script>
-        // Interactive blog posts hover functionality
+        // Blog post data
+        const blogPosts = {
+            '6-months-windows-free': {
+                title: 'I am now 6 months windows free and only barely feeling the itch',
+                marginNotes: [
+                    'Arch Linux revelation',
+                    'Vista nostalgia moment',
+                    'The TUI awakening',
+                    'Control & aesthetics matter',
+                    'DHH\'s Omarchy magic',
+                    'Gaming on Linux solved',
+                    'Steam just works',
+                    'Productivity achieved'
+                ],
+                content: `
+                    <p><em>I use arch btw, but I'm cheating</em><br>
+                    <p><em>17 Jan, 2026</em><br>
+                    
+                    <p>While most 30 somethings probably remember the key moments of their teen years 360 no scoping on xbox 360 and running around outside, one of the key moments for me was getting a hp pc pre-installed with windows vista. This thing blew my mind. I started with windows 95/98 and was already pulling apart the family pc to see how to swap out the cd drive for something that was faster at 6 years old, but I had spent a lot of time with xp and really couldn't see how the world could be much better. My fully skinned foobar 9000 music player was set to auto start on boot ready to play all my kazaar found, virus filled, wav files but then aero hit my retinas and I was in <a href="https://frutigeraeroarchive.org/">Frutiger</a> heaven.</p>
+                    
+                    <p>My god the curves, the insane transparency and how my pc couldn't handle resizing windows due to it. Forget that my mum was talking about returning the thing since the printer didn't work (what is it with a certain generation and needing a printer at all times even though it was only used once a year and still never had any ink?) I was ready to spend every minute I could with this thing. The excitement of having THE peak user experience right in the family room, the pinnacle of technology at my fingertips, I have been chasing that feeling ever since, all of us technophiles have.</p>
+                    
+                    <p>Bummer that we no longer have a Microsoft that seems to care about the same things that we do, likely due to the dispersion of tech into everyone's lives and therefore the need to accommodate for the lowest denominators and have everyone just kind of ok with an experience out of fear that a minority are going to rebel and take a bite out of apple. To chase the high that I felt at 13 I have been sporadically jumping around between operating systems, from windows to ubuntu, back to windows, then windows to mint, then back to windows, then windows 10 (not bad but barely a blip on the dopamine register), then tiny windows. Why couldn't I stick? they just weren't meeting a fundamental need that I had to be in control, do the important things I wanted to do and maybe more important than the other 2 combined, be aesthetically pleased with my gateway to eudaimonia.</p>
+                    
+                    <p>That was until August of 2025 when I came across Omarchy, an opinionated (you get what you get and what you should want to get) Arch linux installation birthed by <a href="https://dhh.dk/">DHH</a>, co-owner and CTO for software company <a href="https://37signals.com/">37 Signals</a>. I was snapped right back to how I felt looking at aero for the first time but even more importantly when I went to do something it just..... worked? Chrome was waiting for me, so was obsidian, my internet connected first try, so did my bluetooth buds and mouse, what linux sorcery was I dabbling in!</p>
+                    
+                    <p>To now be perfectly honest with you dear scant reader, I was kind of cheating, the operating system hopping journey above was all done on my project laptop thinkpad x220, I was never really at any risk of losing my data or productivity, but all of a sudden I found myself only using my thinkpad, its all I wanted to use as I found flow with Omarchy, it was time to make the leap and install Arch on my desktop PC and main laptop, to get the performance I needed for real work. This was truly daunting, a whole day was needed to be set aside, backups of all my hard drives were done, will the data be readable when I was done? only the Omnissiah knows. Then less than an hour later I had fully working Omarchy installations on my PC and my laptop (a surface book 2 with a hacked together bios, no mean feat for DHH to tackle) and I was now a full convert.</p>
+                    
+                    <p>I quickly ran to everyone I could, to tell them of what I had stumbled upon, my wife was first, while happy that I'm happy I wasn't able to fully convince her that this is probably what nirvana feels like. It was my friends that raised the first serious concerns for my wellbeing, what about gaming? I hadn't played a serious video game in a long while at this point but my goodness they were right, was I ready to give up altogether? Arch linux cant play games but I'm not ready to give up. I sat to once again do battle with my distro, navigating the Omarchy menu to the Install option brought a peculiar option 'Gaming', then even more peculiar, 'Steam', it couldn't be, select the option and I was greeted by a quick installation and then the login screen for Steam. Amazingly game support had vastly improved since I had last tried with PopOS! years ago and I was roaming the Mojave wasteland of Fallout New Vegas in no time. Is there anything else that Omarchy is missing? I haven't found it, or atleast an on par alternative.</p>
+                    
+                    <p>I wont say that I won't ever go back to windows, I have too much nostalgia there, but microsoft has so much work to do with their software and operating system that I just don't see it happening any time soon, they haven't even addressed that there is a problem, maybe they don't know? there is so much to be said for Omarchy that I can't do it here, I will be speaking on the specifics of what I love in the future in greater detail, but for the foreseeable future I will be writing these articles and building this site with Omarchy and neovim.</p>
+                `
+            }
+        };
+
+        // Interactive blog posts hover and click functionality
         const postImage = document.getElementById('post-image');
         const postLinks = document.querySelectorAll('.interactive-list-item a');
+        const blogPostContainer = document.getElementById('blog-post-container');
+        const blogPostContent = document.querySelector('.blog-post-content');
 
         // Hide image initially
         postImage.style.opacity = '0';
 
         postLinks.forEach(link => {
             link.addEventListener('mouseenter', function() {
-                // Show placeholder for now
-                postImage.style.opacity = '1';
-                postImage.src = '';
-                postImage.style.backgroundColor = '#e5e7eb';
+                const imageData = this.getAttribute('data-image');
+                if (imageData) {
+                    // Show image for posts with images
+                    postImage.style.opacity = '1';
+                    postImage.src = imageData;
+                    postImage.style.backgroundColor = 'transparent';
+                    postImage.alt = this.textContent + ' logo';
+                    postImage.classList.add('logo-image'); // Add logo class for proper sizing
+                } else {
+                    // Show placeholder for posts without images
+                    postImage.style.opacity = '1';
+                    postImage.src = '';
+                    postImage.style.backgroundColor = '#e5e7eb';
+                    postImage.alt = 'Blog post placeholder';
+                    postImage.classList.remove('logo-image'); // Remove logo class
+                }
             });
 
             link.addEventListener('mouseleave', function() {
                 // Hide image immediately
                 postImage.style.opacity = '0';
+                postImage.classList.remove('logo-image'); // Remove logo class when hovering out
+            });
+
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const postId = this.getAttribute('data-post');
+                
+                if (postId && blogPosts[postId]) {
+                    displayBlogPost(postId);
+                }
             });
         });
+
+        function displayBlogPost(postId) {
+            const post = blogPosts[postId];
+            if (!post) return;
+
+            // Create margin notes HTML
+            const marginNotesHTML = post.marginNotes.map(note => 
+                `<div class="margin-note"><em>${note}</em></div>`
+            ).join('');
+
+            // Create the blog post HTML with 80/20 split
+            blogPostContent.innerHTML = `
+                <div class="blog-post-layout">
+                    <div class="margin-notes-column">
+                        ${marginNotesHTML}
+                    </div>
+                    <div class="main-content-column">
+                        <h3>${post.title}</h3>
+                        <div class="blog-post-text">
+                            ${post.content}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Show the blog post container
+            blogPostContainer.style.display = 'block';
+            
+            // Smooth scroll to the blog post
+            blogPostContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     </script>
 </body>
 </html>

@@ -4,16 +4,16 @@ This file contains guidelines for agentic coding agents working on this resume w
 
 ## Project Overview
 
-This is a static HTML/CSS/JavaScript resume website with a minimalist design. The site consists of 5 main pages:
+This is a static HTML/CSS/JavaScript resume website with a unified minimalist design. The site uses a single-page application pattern across 5 main pages:
 - `index.html` - Home page with site overview
-- `about.html` - About section with professional background
-- `projects.html` - Projects portfolio page with custom layout
+- `about.html` - About section with professional background  
+- `projects.html` - Projects portfolio page with interactive project list
 - `blog.html` - Blog section (currently placeholder)
 - `philosophy.html` - Personal philosophy section (currently placeholder)
 
 ## Build/Development Commands
 
-Since this is a static website, there are no complex build commands. The development workflow is:
+Since this is a static website, there are no complex build commands or testing frameworks:
 
 ### Local Development
 ```bash
@@ -30,7 +30,7 @@ live-server  # if installed via npm
 # HTML validation
 npx html-validator index.html about.html projects.html blog.html philosophy.html
 
-# CSS validation
+# CSS validation  
 npx stylelint styles.css
 
 # Accessibility check
@@ -41,8 +41,8 @@ npx axe index.html
 ```
 /  (root)
 ├── index.html          # Home page
-├── about.html          # About page  
-├── projects.html       # Projects portfolio
+├── about.html          # About page
+├── projects.html       # Projects portfolio  
 ├── blog.html           # Blog listing
 ├── philosophy.html     # Philosophy section
 ├── styles.css          # Main stylesheet
@@ -52,130 +52,113 @@ npx axe index.html
 ## Code Style Guidelines
 
 ### HTML Structure
-- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<aside>`)
-- Maintain consistent DOCTYPE: `<!DOCTYPE html>`
-- Set `lang="en"` on HTML element
-- Use proper ARIA attributes for accessibility
-- Include viewport meta tag for responsive design
-- Scripts should be placed before closing `</body>` tag
-- Each page should have unique, descriptive `<title>` tag
-- **Non-projects pages** use 3-column layout: `<div class="left-spacer"></div>`, `<div class="right-column">` containing name-section and content-grid
-- **Projects page** uses `<body class="projects-page">` with different layout structure
+- **DOCTYPE**: Use `<!DOCTYPE html>` consistently
+- **Language**: Set `lang="en"` on HTML element
+- **Viewport**: Include `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- **Titles**: Each page should have unique, descriptive `<title>` tag
+- **Navigation**: All pages include navigation symbol and menu at the end of body
+- **Scripts**: Place JavaScript before closing `</body>` tag
+- **Semantic HTML**: Use appropriate HTML5 semantic elements
 
 ### CSS Architecture
-- **CSS Variables**: All colors and spacing use CSS custom properties defined in `:root`
-- **Design System**: Colors follow green-themed palette:
+- **Design System**: CSS custom properties in `:root`:
   - `--green-primary`: #4A7C59 (main accent)
   - `--green-light`: #7db59f (hover states)
   - `--green-dark`: #3c8b5b (active states)
+  - `--bg-light`: #f8f9fa (light backgrounds)
   - `--bg-white`: #F9F6EE (main background)
-  - `--bg-light`: #f8f9fa (sidebar background)
-- **Typography**: JetBrains Mono font family throughout
-- **Spacing**: Use consistent margin/padding units (rem)
-- **Responsive Design**: Mobile-first approach with breakpoints at 768px and 480px
-- **Utility Classes**: Include `.mt-2`, `.mt-3`, `.mb-2`, `.mb-3`, `.text-center`
+  - `--text-dark`: #2d3748 (primary text)
+  - `--text-muted`: #6b7280 (secondary text)
+  - `--border-light`: #e5e7eb (borders)
+  - `--font-mono`: 'JetBrains Mono', monospace
+
+- **Typography**: JetBrains Mono font family imported from Google Fonts
+- **Spacing**: Use consistent rem units for margins/padding
+- **Responsive Design**: Mobile-first with breakpoints at 768px and 480px
 
 ### JavaScript Conventions
-- Use `const` and `let` exclusively (no `var`)
-- Event listeners should use `e.stopPropagation()` for dropdown menus
-- Implement keyboard accessibility (Enter, Space, Escape keys)
-- Use semantic event handling with proper accessibility attributes
-- Keep scripts small and page-specific
+- **Variables**: Use `const` and `let` exclusively (no `var`)
+- **Event Handling**: Use `e.stopPropagation()` for dropdown menus
+- **Accessibility**: Implement keyboard navigation (Enter, Space, Escape keys)
+- **Modularity**: Keep scripts small and page-specific
+- **Semantic Events**: Use proper ARIA attributes and roles
+
+### Unified Layout System
+All pages use the `.unified-container` layout system:
+
+```
+unified-container (grid: auto auto auto rows)
+├── unified-name-section (full width)
+├── unified-quote-section (optional, 1:1 columns)
+└── unified-content-section (1:1 columns)
+    ├── left-content (project list or main content)
+    └── right-blurb (descriptive text)
+```
 
 ### Navigation Patterns
-- All pages except `projects.html` use left-side hamburger menu
-- `projects.html` uses right-side navigation symbol
-- Navigation should include proper ARIA roles and keyboard support
-- Active page should have `class="active"` on navigation link
+- **Navigation Symbol**: Hamburger menu icon in top-left corner
+- **Menu Structure**: Dropdown with 5 links, includes `role="menu"` and ARIA attributes
+- **Active States**: Current page gets `class="active"` on navigation link
+- **Keyboard Support**: Full keyboard navigation with Escape to close
+- **Click Outside**: Menu closes when clicking outside navigation area
 
-### Page-Specific Styles
-- `projects.html` has its own `<style>` block with custom layout
-- Other pages share global styles from `styles.css`
-- Projects page uses 2-column grid layout with unique navigation
+### Content Layout Patterns
 
-### Grid Layout System
-- **Non-projects pages** use a 3-column grid layout:
-  - Left spacer column: customizable width (default 2fr)
-  - Right column: contains name-section and content-grid
-  - Content-grid within right column: 1fr 3fr (sidebar:main-content)
-- **Projects page** uses its own custom layout with different grid structure
-- **Grid control**: Modify `grid-template-columns` in `styles.css` line 231 to adjust left spacer width
-  - Format: `grid-template-columns: 2fr 3fr` (left:right ratio)
-  - Alternative: `grid-template-columns: 200px 1fr` (fixed:left, flexible:right)
+#### Traditional Layout (index.html, about.html, blog.html, philosophy.html)
+- Uses `.traditional-content` within unified content section
+- Single column content with headings, paragraphs, lists
+- No left/right split, content takes full width of unified-content-section
 
-### Content Guidelines
-- All pages use consistent header structure with `.page-header`
-- Sidebar content should be brief and informative
-- Main content should be contained in `<main class="main-content">`
-- Use semantic heading hierarchy (h1 > h2 > h3)
+#### Projects Layout (projects.html)
+- Uses `.left-content` for interactive project list (`<ol class="interactive-list">`)
+- Uses `.right-blurb` for project descriptions and hover images
+- Includes project hover interactions with image display
 
 ### File References
-- CSS should be linked as: `<link rel="stylesheet" href="styles.css">`
-- For cache busting, use version parameter: `styles.css?v=1.3`
-- Internal links should use relative paths without leading slash
+- **CSS**: Linked as `<link rel="stylesheet" href="styles.css?v=1.4">`
+- **Internal Links**: Use relative paths without leading slash
+- **Cache Busting**: Include version parameter in CSS href
 
 ### Browser Compatibility
-- Target modern browsers (ES6+ features acceptable)
-- Test responsive behavior on mobile/tablet breakpoints
-- Ensure accessibility features work across browsers
+- **Target**: Modern browsers (ES6+ features acceptable)
+- **Testing**: Verify responsive behavior on mobile/tablet breakpoints
+- **Accessibility**: Ensure ARIA attributes work across browsers
 
 ## Testing Approach
 
 ### Manual Testing Checklist
 - [ ] Navigation menu functionality (click, keyboard, outside click)
-- [ ] Responsive design on mobile (768px, 480px breakpoints)
+- [ ] Responsive design on mobile (768px, 480px breakpoints)  
 - [ ] Accessibility: screen reader compatibility, keyboard navigation
 - [ ] Cross-browser consistency
 - [ ] Link functionality and hover states
-- [ ] Image loading and alt text (where applicable)
+- [ ] Project hover interactions (projects.html)
 
 ### Accessibility Requirements
-- All interactive elements must have proper ARIA attributes
-- Keyboard navigation should be fully functional
-- Color contrast ratios meet WCAG AA standards
-- Semantic HTML structure for screen readers
+- **ARIA Roles**: Use proper roles on navigation and interactive elements
+- **Keyboard Navigation**: Full functionality with Tab, Enter, Space, Escape
+- **Color Contrast**: Meet WCAG AA standards
+- **Semantic HTML**: Proper structure for screen readers
 
 ## Common Tasks
 
-### Adding New Content Section
-1. Add semantic HTML in appropriate page
-2. Use existing CSS classes for consistency
-3. Follow heading hierarchy
+### Adding New Page
+1. Create HTML file with unified structure
+2. Include navigation symbol and menu at end of body
+3. Add navigation link to ALL existing pages
 4. Test responsive behavior
-5. **For non-projects pages**: Ensure content is placed within the appropriate grid structure (left-spacer + right-column)
+5. Verify accessibility
 
 ### Modifying Navigation
 1. Update navigation in ALL HTML files
 2. Ensure `class="active"` is on correct page
 3. Test keyboard navigation
-4. Verify accessibility attributes
+4. Verify ARIA attributes
 
 ### CSS Changes
 1. Use CSS variables for new colors/values
-2. Test in all pages (projects.html has overrides)
+2. Test across all page types (traditional vs projects layout)
 3. Check responsive breakpoints
 4. Verify hover states and transitions
-5. **Grid modifications**: When adjusting grid ratios, ensure alignment between name-section and sidebar content is maintained
 
-This project emphasizes clean, maintainable code with strong accessibility and responsive design principles.
-
-## Latest Updates
-
-### Grid Layout Enhancement (v1.4)
-- Implemented 3-column grid layout for non-projects pages to ensure consistent alignment
-- Left spacer column provides full-height vertical alignment control
-- Name section ("Daniel Pollitt") now aligns perfectly with sidebar content
-- Responsive design maintains alignment across all screen sizes
-- Grid ratio controlled by `grid-template-columns` in `styles.css` line 231
-- Projects page remains unaffected with its custom layout structure
-
-### Current Grid Structure
-```
-main-container (1:3 grid ratio)
-├── left-spacer (empty, full-height)
-└── right-column
-    ├── name-section ("Daniel Pollitt")
-    └── content-grid (1:3 grid ratio)
-        ├── sidebar (Quick Facts)
-        └── main-content
-```
+This project emphasizes unified design patterns, semantic HTML, and strong accessibility principles with minimal, purposeful code.

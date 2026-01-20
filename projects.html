@@ -29,34 +29,28 @@
             <div class="left-content">
                 <ol class="interactive-list">
                     <li class="interactive-list-item">
-                        <a href="index.html" data-project="this-site">This site</a>
+                        <a href="#" data-project="this-site" data-image="this-site.svg">This site</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-02">Project Alpha</a>
+                        <a href="#" data-project="nps-transformation" data-image="nps-transformation.svg">NPS Transformation Initiative</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-03">Project Beta</a>
+                        <a href="#" data-project="self-service" data-image="self-service.svg">Self-Service Implementation</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-04">Project Gamma</a>
+                        <a href="#" data-project="delivery-optimization" data-image="delivery-optimization.svg">Delivery Optimization & Cost Initiative</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-05">Project Delta</a>
+                        <a href="#" data-project="agile-transformation" data-image="agile-transformation.svg">Agile Transformation Program</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-06">Project Epsilon</a>
+                        <a href="#" data-project="price-promise" data-image="price-promise.svg">Price Promise Guarantee Program</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-07">Project Zeta</a>
+                        <a href="#" data-project="operations-automation" data-image="operations-automation.svg">Operations Report Automation</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-project="project-08">Project Eta</a>
-                    </li>
-                    <li class="interactive-list-item">
-                        <a href="#" data-project="project-09">Project Theta</a>
-                    </li>
-                    <li class="interactive-list-item">
-                        <a href="#" data-project="project-10">Project Iota</a>
+                        <a href="#" data-project="woolworths-marketplace" data-image="woolworths-marketplace.svg">Woolworths Marketplace Integration</a>
                     </li>
                 </ol>
             </div>
@@ -70,6 +64,13 @@
                     <img id="project-image" class="hover-image-display" src="" alt="">
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Project Content Area -->
+    <div id="project-container" class="blog-post-container" style="display: none;">
+        <div class="blog-post-content">
+            <!-- Projects will be dynamically loaded here -->
         </div>
     </div>
 
@@ -116,26 +117,391 @@
             }
         });
 
-        // Project hover image functionality
+        // Project data with content
+        const projectData = {
+            'this-site': {
+                title: 'This Site',
+                marginNotes: [
+                    'Unified design system',
+                    'Semantic HTML5 structure',
+                    'Accessibility-first approach',
+                    'Minimalist philosophy',
+                    'Hand-coded craftsmanship',
+                    'No framework dependency',
+                    'Mobile-first responsive',
+                    'Code as expression'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Demonstrated technical capability and personal philosophy through hand-crafted digital presence. Created portfolio showcasing both professional achievements and values through thoughtful implementation of every design choice and interaction pattern.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>Need for digital presence that reflects both professional capabilities and personal values. Traditional portfolio approaches often focus solely on technical achievements without conveying philosophy and approach behind the work. Required solution that demonstrates craftsmanship while maintaining authentic voice and accessibility.</p>
+
+                    <h3>Design Philosophy</h3>
+                    <p>Embraced minimalism as technical discipline and aesthetic choice. Every element serves specific purpose with careful attention to detail. Prioritized accessibility, semantic HTML, and progressive enhancement over flashy features. Code quality itself becomes expression of values - readable, maintainable, and intentional.</p>
+
+                    <h3>Technical Implementation</h3>
+                    <p>Built without frameworks or dependencies to demonstrate fundamental web development skills. Implemented unified design system using CSS custom properties for maintainability. Created responsive grid layouts adapting to various screen sizes. Focused on semantic HTML5 structure for accessibility and search engine optimization.</p>
+
+                    <h3>Philosophical Integration</h3>
+                    <p>The site itself represents values through technical choices: minimalism in design, attention to detail in implementation, accessibility in user experience. Every interaction pattern, animation, and layout decision reflects belief in thoughtful, purposeful creation. Code becomes medium for expressing approach to problems and solutions.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Hand-crafted solutions reveal deeper understanding than framework dependencies. Constraint breeds creativity and forces intentional choices. User experience quality emerges from attention to small details rather than complex features. Technical implementation itself can convey philosophy and values.</p>
+                `
+            },
+            'nps-transformation': {
+                title: 'NPS Transformation Initiative',
+                marginNotes: [
+                    'Executive sponsorship',
+                    'Cross-functional alignment',
+                    'Data-driven approach',
+                    'Customer journey mapping',
+                    'Process reengineering',
+                    'Technology enablement',
+                    'Continuous monitoring',
+                    'Organizational change'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Achieved one of the most significant NPS improvements in Samsung Electronics regional history, transforming customer sentiment from severely negative to strongly positive territory. This multi-year initiative established the foundation for sustained customer experience excellence across the entire eCommerce operation.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>When designated as the NPS improvement lead in August 2022, the eCommerce operation was facing severe customer satisfaction challenges with negative NPS scores indicating fundamental issues in the customer experience. The business was experiencing high complaint volumes, escalating customer concerns, and reputational risk that threatened market position and revenue growth.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Led a comprehensive transformation initiative spanning organizational structure, process design, technology implementation, and cultural change. Established the first interdepartmental governance cadence involving C-suite leadership to ensure enterprise-wide commitment and resource alignment.</p>
+
+                    <h3>Technical Implementation</h3>
+                    <p>Designed and deployed an integrated customer experience management system combining real-time sentiment analysis, automated issue tracking, and predictive analytics. Implemented self-service technologies to reduce friction points and empower customers with immediate resolution capabilities. Created comprehensive dashboards for executive visibility and operational decision-making.</p>
+
+                    <h3>Process Transformation</h3>
+                    <p>Redesigned end-to-end customer journey workflows, from initial contact through issue resolution to post-service follow-up. Established new service level agreements (SLAs) across all touchpoints and implemented quality assurance frameworks to ensure consistency and accountability.</p>
+
+                    <h3>Organizational Change</h3>
+                    <p>Spearheaded cultural transformation from reactive problem-solving to proactive customer experience management. Developed training programs and performance metrics aligned with customer-centric outcomes. Implemented recognition programs to reinforce desired behaviors and celebrate improvement milestones.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Successfully transformed NPS from negative territory to strongly positive scores over a two-year period. Reduced customer call and complaint escalations by over 50% while order volume increased significantly. Maintained elevated performance levels with customer service concerns remaining at historically low levels throughout 2024.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Executive sponsorship and cross-functional collaboration proved critical for sustained success. Data-driven decision making enabled targeted interventions and measurable improvements. Technology implementation alone was insufficient without corresponding process and cultural changes.</p>
+                `
+            },
+            'self-service': {
+                title: 'Self-Service Implementation',
+                marginNotes: [
+                    'Return request automation',
+                    'Knowledge base architecture',
+                    'One-click refunds',
+                    'User experience design',
+                    'System integration',
+                    'Process automation',
+                    'Analytics implementation',
+                    'Customer journey optimization'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Reduced average time to resolution by multiple days through comprehensive self-service implementation. Empowered customers with immediate access to solutions while significantly decreasing agent workload and improving overall satisfaction scores.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>The existing customer service model relied heavily on agent-assisted resolutions, creating bottlenecks during peak periods and extending resolution times. Customers frequently encountered delays for routine requests, while agents spent excessive time on repetitive, low-complexity interactions that could be automated.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Designed a multi-phase self-service transformation focusing on high-frequency customer interactions. Implemented user-centered design principles to ensure intuitive interfaces while maintaining robust backend processing and integration with existing enterprise systems.</p>
+
+                    <h3>Technical Implementation</h3>
+                    <p>Developed a comprehensive self-service ecosystem comprising three core components: automated return request processing, intelligent knowledge base with contextual search, and streamlined partial refund system. Each component was built with responsive design principles and integrated seamlessly with the existing CRM and order management systems.</p>
+
+                    <h3>Return Request System</h3>
+                    <p>Created an intuitive return initiation flow that guides customers through eligibility verification, reason categorization, and return shipping arrangements. Implemented automated validation rules and approval workflows to reduce processing time while maintaining compliance controls. Added real-time tracking capabilities and proactive status notifications.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Achieved significant reduction in average resolution time across all self-service categories. Decreased agent workload for routine requests by over 60%, allowing team members to focus on complex customer issues requiring specialized attention. Customer satisfaction scores for self-service interactions exceeded those of agent-assisted resolutions.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>User experience design proved critical for adoption and success. Comprehensive testing and iterative refinement based on customer feedback enabled continuous improvement. Integration with existing systems required careful planning and stakeholder coordination to ensure seamless operation.</p>
+                `
+            },
+            'delivery-optimization': {
+                title: 'Delivery Optimization & Cost Initiative',
+                marginNotes: [
+                    'Route optimization',
+                    'Carrier negotiation',
+                    'Warehouse network redesign',
+                    'Delivery tracking integration',
+                    'Big & bulky logistics',
+                    'Auto-fulfilment system',
+                    'Cost analysis modeling',
+                    'Performance monitoring'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Achieved significant reduction in average delivery lead times for big and bulky products while implementing major operational cost savings across the delivery network. Established scalable infrastructure supporting continued business growth and improved customer satisfaction.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>The eCommerce operation faced substantial challenges with delivery performance and cost efficiency. Big and bulky products required specialized logistics solutions with extended delivery times that negatively impacted customer experience. Carrier costs and inefficiencies in the delivery network created significant operational expenses that limited profitability and competitiveness.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Led a comprehensive delivery transformation initiative spanning carrier relationships, warehouse operations, technology implementation, and process optimization. Implemented data-driven decision making to identify improvement opportunities and measure performance across all aspects of the delivery ecosystem.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Reduced average delivery lead times from weeks to single-digit days for big and bulky products. Achieved substantial operational cost savings through carrier optimization and process improvements. Improved customer satisfaction scores related to delivery performance by multiple percentage points.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Data-driven analysis proved essential for identifying and prioritizing improvement opportunities. Carrier relationship management required ongoing attention and performance monitoring. Technology implementation provided the foundation for sustained improvements and scalability.</p>
+                `
+            },
+            'agile-transformation': {
+                title: 'Agile Transformation Program',
+                marginNotes: [
+                    'Methodology transition',
+                    'Team structure redesign',
+                    'Process reengineering',
+                    'Tool implementation',
+                    'Agile coaching',
+                    'Cultural change management',
+                    'Performance metrics',
+                    'Continuous improvement'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Increased project delivery velocity by multiple times through comprehensive transformation from waterfall to Agile/Scrum methodology. Enhanced team collaboration, improved stakeholder satisfaction, and established sustainable framework for continued innovation and growth.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>The department operated under traditional waterfall project management methodologies characterized by extended project timelines, limited flexibility, and frequent misalignment with business priorities. Stakeholder dissatisfaction with delivery speed and inability to respond to changing requirements necessitated a fundamental shift in approach.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Led department-wide transformation adopting Agile/Scrum methodology with focus on incremental delivery, continuous feedback, and adaptive planning. Implemented change management strategies to ensure cultural adoption and sustain improvements in team performance and stakeholder satisfaction.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Achieved multiple-fold increase in project delivery velocity with consistent sprint completion rates above 90%. Reduced time-to-market for key initiatives by over 50%. Improved stakeholder satisfaction scores and team engagement metrics. Enhanced predictability and transparency in project delivery.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Executive sponsorship proved critical for overcoming organizational resistance. Incremental implementation allowed for learning and adjustment based on feedback. Cultural change required sustained attention and reinforcement beyond initial training.</p>
+                `
+            },
+            'price-promise': {
+                title: 'Price Promise Guarantee Program',
+                marginNotes: [
+                    'Price comparison engine',
+                    'Automated verification',
+                    'Fraud detection',
+                    'Customer interface design',
+                    'Compensation workflow',
+                    'Competitor monitoring',
+                    'Policy compliance',
+                    'Business rules engine'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Implemented comprehensive price matching guarantee program with automated verification and compensation processes. Enhanced customer trust and competitive positioning while maintaining operational efficiency and cost control through intelligent automation and fraud prevention.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>Customers increasingly expected price matching guarantees in the competitive eCommerce landscape, but manual verification processes created operational bottlenecks and delayed customer resolutions. Existing processes were labor-intensive, prone to errors, and failed to provide customers with the immediate satisfaction they expected from price matching promises.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Designed and implemented an automated price matching system combining real-time price monitoring, intelligent verification algorithms, and seamless compensation processes. Focused on customer experience while implementing robust fraud detection and compliance controls to protect business interests.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Achieved significant improvement in customer satisfaction scores related to pricing confidence. Reduced manual processing time for price match requests by over 90% through automation. Maintained fraud rates below industry averages while processing high volumes of legitimate claims. Enhanced competitive positioning and market share in key product categories.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Automation proved essential for scalability and customer experience improvement. Robust fraud detection required continuous refinement and adaptation to emerging threats. Clear customer communication and transparent processes built trust and program credibility.</p>
+                `
+            },
+            'operations-automation': {
+                title: 'Operations Report Automation',
+                marginNotes: [
+                    'Data pipeline architecture',
+                    'Automated ETL processes',
+                    'Report generation engine',
+                    'Dashboard development',
+                    'Data quality validation',
+                    'Scheduling orchestration',
+                    'Error handling',
+                    'Performance optimization'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Achieved significant reduction in manual processing time and improved data accuracy through comprehensive operations report automation. Enhanced decision-making capabilities with real-time access to reliable business intelligence and automated exception reporting.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>Operations reporting relied heavily on manual data extraction, transformation, and compilation processes that consumed significant resources and introduced risks of human error. Reporting delays limited leadership's ability to respond quickly to business trends and operational issues. Data quality inconsistencies across multiple systems created challenges for accurate analysis and decision-making.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Designed and implemented end-to-end automation solution spanning data collection, processing, validation, and distribution. Focused on creating scalable architecture supporting growing data volumes while maintaining accuracy and reliability. Implemented comprehensive error handling and monitoring to ensure consistent operation.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Reduced manual processing time for routine reports by over 95%, freeing significant resources for value-added analysis. Improved data accuracy through elimination of manual data entry and validation errors. Decreased report generation times from days to minutes for most standard reports. Enhanced leadership decision-making capabilities with timely access to accurate business intelligence.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Comprehensive data quality validation proved essential for reliable automation outputs. Incremental implementation allowed for learning and refinement based on user feedback. Robust error handling and monitoring capabilities were critical for maintaining system reliability and user trust.</p>
+                `
+            },
+            'woolworths-marketplace': {
+                title: 'Woolworths Marketplace Integration',
+                marginNotes: [
+                    'API integration architecture',
+                    'Product catalog sync',
+                    'Order management',
+                    'Inventory coordination',
+                    'Data mapping',
+                    'Error handling',
+                    'Performance monitoring',
+                    'Compliance management'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Business Outcomes</h3>
+                        <p>Successfully integrated with Woolworths Marketplace platform enabling seamless product catalog synchronization and order management between systems. Expanded market reach and sales opportunities while maintaining operational efficiency and brand consistency across multiple channels.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Challenge & Context</h3>
+                    <p>The growing importance of marketplace platforms in the retail landscape required strategic integration with Woolworths Marketplace to reach new customer segments and increase sales opportunities. Manual processes for product listing, inventory management, and order fulfillment created operational inefficiencies and limited scalability for marketplace operations.</p>
+
+                    <h3>Strategic Approach</h3>
+                    <p>Designed and implemented comprehensive integration solution combining real-time API connectivity, robust data synchronization, and automated workflow management. Focused on creating scalable architecture supporting growth while ensuring data accuracy, operational efficiency, and compliance with marketplace requirements.</p>
+
+                    <h3>Results & Impact</h3>
+                    <p>Successfully launched marketplace presence with comprehensive product listings and automated order processing. Achieved significant increase in sales revenue through marketplace channel within first quarter. Maintained high uptime for integration systems with minimal manual intervention required. Reduced operational overhead for marketplace management through automation.</p>
+
+                    <h3>Key Learnings</h3>
+                    <p>Robust error handling and monitoring proved essential for maintaining reliable marketplace operations. Data mapping complexity required careful attention and ongoing refinement as marketplace requirements evolved. Close partnership with marketplace technical team facilitated smooth integration and issue resolution.</p>
+                `
+            }
+        };
+
+        // Project hover and click functionality
         const projectImage = document.getElementById('project-image');
         const projectLinks = document.querySelectorAll('.interactive-list-item a');
+        const projectContainer = document.getElementById('project-container');
+        const projectContent = document.querySelector('.blog-post-content');
 
         // Hide image initially
         projectImage.style.opacity = '0';
 
         projectLinks.forEach(link => {
             link.addEventListener('mouseenter', function() {
-                // Show grey placeholder for now
-                projectImage.style.opacity = '1';
-                projectImage.src = '';
-                projectImage.style.backgroundColor = '#e5e7eb';
+                const imageData = this.getAttribute('data-image');
+                if (imageData) {
+                    // Show image for projects with images
+                    projectImage.style.opacity = '1';
+                    projectImage.src = imageData;
+                    projectImage.style.backgroundColor = 'transparent';
+                    projectImage.alt = this.textContent + ' visualization';
+                    projectImage.classList.add('logo-image'); // Add logo class for proper sizing
+                } else {
+                    // Show placeholder for projects without images
+                    projectImage.style.opacity = '1';
+                    projectImage.src = '';
+                    projectImage.style.backgroundColor = '#e5e7eb';
+                    projectImage.alt = 'Project visualization placeholder';
+                    projectImage.classList.remove('logo-image'); // Remove logo class
+                }
             });
 
             link.addEventListener('mouseleave', function() {
-                // Hide image immediately (no transition)
+                // Hide image immediately
                 projectImage.style.opacity = '0';
+                projectImage.classList.remove('logo-image'); // Remove logo class when hovering out
+            });
+
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                
+                if (projectId && projectData[projectId]) {
+                    displayProject(projectId);
+                    // Update URL for shareable link
+                    const url = new URL(window.location);
+                    url.searchParams.set('project', projectId);
+                    window.history.pushState({}, '', url);
+                }
             });
         });
+
+        // Check for URL parameter on page load
+        function loadProjectFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('project');
+            
+            if (projectId && projectData[projectId]) {
+                displayProject(projectId);
+                // Highlight the active link
+                const activeLink = document.querySelector(`[data-project="${projectId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-project');
+                }
+            }
+        }
+
+        // Load project from URL when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjectFromURL();
+        });
+
+        function displayProject(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            // Create margin notes HTML
+            const marginNotesHTML = project.marginNotes.map(note => 
+                `<div class="margin-note"><em>${note}</em></div>`
+            ).join('');
+
+            // Create the project HTML with 80/20 split
+            projectContent.innerHTML = `
+                <div class="blog-post-layout">
+                    <div class="margin-notes-column">
+                        ${marginNotesHTML}
+                    </div>
+                    <div class="main-content-column">
+                        <h3>${project.title}</h3>
+                        <div class="blog-post-text">
+                            ${project.content}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Show the project container
+            projectContainer.style.display = 'block';
+            
+            // Smooth scroll to the project
+            projectContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     </script>
 </body>
 </html>

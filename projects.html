@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Daniel Pollitt</title>
-    <link rel="stylesheet" href="styles.css?v=1.3">
+    <link rel="stylesheet" href="styles.css?v=1.6">
 
 </head>
     <body class="projects-page">
@@ -417,25 +417,25 @@
                 const imageData = this.getAttribute('data-image');
                 if (imageData) {
                     // Show image for projects with images
-                    projectImage.style.opacity = '1';
+                    projectImage.classList.add('logo-image'); // Add logo class first for proper sizing
                     projectImage.src = imageData;
                     projectImage.style.backgroundColor = 'transparent';
                     projectImage.alt = this.textContent + ' visualization';
-                    projectImage.classList.add('logo-image'); // Add logo class for proper sizing
+                    projectImage.style.opacity = '1';
                 } else {
                     // Show placeholder for projects without images
-                    projectImage.style.opacity = '1';
+                    projectImage.classList.remove('logo-image'); // Remove logo class first
                     projectImage.src = '';
                     projectImage.style.backgroundColor = '#e5e7eb';
                     projectImage.alt = 'Project visualization placeholder';
-                    projectImage.classList.remove('logo-image'); // Remove logo class
+                    projectImage.style.opacity = '1';
                 }
             });
 
             link.addEventListener('mouseleave', function() {
                 // Hide image immediately
                 projectImage.style.opacity = '0';
-                projectImage.classList.remove('logo-image'); // Remove logo class when hovering out
+                projectImage.classList.remove('logo-image'); // Remove logo class immediately
             });
 
             link.addEventListener('click', function(e) {

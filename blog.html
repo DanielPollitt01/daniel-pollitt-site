@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Resume Website</title>
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.6">
 </head>
 <body>
     <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
@@ -166,25 +166,25 @@
                 const imageData = this.getAttribute('data-image');
                 if (imageData) {
                     // Show image for posts with images
-                    postImage.style.opacity = '1';
+                    postImage.classList.add('logo-image'); // Add logo class for proper sizing
                     postImage.src = imageData;
                     postImage.style.backgroundColor = 'transparent';
                     postImage.alt = this.textContent + ' logo';
-                    postImage.classList.add('logo-image'); // Add logo class for proper sizing
+                    postImage.style.opacity = '1';
                 } else {
                     // Show placeholder for posts without images
-                    postImage.style.opacity = '1';
+                    postImage.classList.remove('logo-image'); // Remove logo class first
                     postImage.src = '';
                     postImage.style.backgroundColor = '#e5e7eb';
                     postImage.alt = 'Blog post placeholder';
-                    postImage.classList.remove('logo-image'); // Remove logo class
+                    postImage.style.opacity = '1';
                 }
             });
 
             link.addEventListener('mouseleave', function() {
                 // Hide image immediately
                 postImage.style.opacity = '0';
-                postImage.classList.remove('logo-image'); // Remove logo class when hovering out
+                postImage.classList.remove('logo-image'); // Remove logo class immediately
             });
 
             link.addEventListener('click', function(e) {

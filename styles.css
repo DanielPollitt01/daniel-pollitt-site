@@ -746,7 +746,6 @@ a {
   border: 2px solid var(--border-light);
   opacity: 0;
   object-fit: cover;
-  transition: opacity 0.1s ease;
 }
 
 /* Logo display - preserve aspect ratio and natural size */
@@ -766,7 +765,6 @@ a {
   border: 2px solid var(--border-light);
   opacity: 0;
   object-fit: cover;
-  transition: opacity 0.1s ease;
 }
 
 /* Traditional Content Layout for Unified Pages */

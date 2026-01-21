@@ -58,75 +58,518 @@
         <div class="unified-quote-section">
             <div class="empty-left"></div>
             <div class="quote-title-right">
-                <h2>Skills and expertise</h2>
+                <h2>Professional journey</h2>
             </div>
         </div>
 
         <!-- Content Section - Interactive List Layout -->
         <div class="unified-content-section">
-            <!-- Left: Skills List -->
+            <!-- Left: Roles List -->
             <div class="left-content">
                 <ol class="interactive-list">
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="web-development">Web Development</a>
+                        <a href="#" data-role="ecommerce-lead">eCommerce Customer Experience Lead</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="system-architecture">System Architecture</a>
+                        <a href="#" data-role="consultancy-owner">IT Consultancy Business Owner</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="data-analysis">Data Analysis</a>
+                        <a href="#" data-role="regulatory-lead">Fair Trading Regulatory Lead</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="project-management">Project Management</a>
+                        <a href="#" data-role="service-leader">Service Team Leader</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="technical-writing">Technical Writing</a>
+                        <a href="#" data-role="policy-graduate">Government & Public Policy Graduate</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="team-leadership">Team Leadership</a>
+                        <a href="#" data-role="defence-cadet">Australian Defence Force Cadet</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="user-experience">User Experience Design</a>
+                        <a href="#" data-role="project-management">Google Project Management Professional</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-skill="cloud-infrastructure">Cloud Infrastructure</a>
+                        <a href="#" data-role="data-science">Data Science & AI Specialist</a>
                     </li>
                 </ol>
             </div>
 
             <!-- Right: Professional Background with Image Display -->
             <div class="right-blurb">
-                <p>A focused professional with expertise across multiple domains of technology and business. Each skill represents years of practical experience and continuous learning, built on a foundation of analytical thinking and creative problem-solving.</p>
+                <p>A focused professional with expertise across multiple domains of technology and business. Each role represents years of practical experience and continuous learning, built on a foundation of analytical thinking and creative problem-solving.</p>
 
-                <!-- Skill Image Display -->
+                <!-- Role Image Display -->
                 <div class="hover-image-container">
-                    <img id="skill-image" class="hover-image-display" src="" alt="Skill visualization">
+                    <img id="role-image" class="hover-image-display" src="" alt="Role visualization">
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Role Content Area -->
+    <div id="role-container" class="blog-post-container" style="display: none;">
+        <div class="blog-post-content">
+            <!-- Role content will be dynamically loaded here -->
+        </div>
+    </div>
+
     <script>
-        // Interactive skills hover functionality
-        const skillImage = document.getElementById('skill-image');
-        const skillLinks = document.querySelectorAll('.interactive-list-item a');
+        // Role data with content
+        const roleData = {
+            'ecommerce-lead': {
+                title: 'eCommerce Customer Experience Lead',
+                subtitle: 'Samsung Electronics | Nov 2020 - PRESENT',
+                marginNotes: [
+                    'Cross-functional leadership',
+                    'Executive reporting',
+                    'NPS transformation',
+                    'Process reengineering',
+                    'Technology implementation',
+                    'Stakeholder management',
+                    'Organizational change',
+                    'Data-driven decision making'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Led Samsung Electronics eCommerce customer experience transformation, driving one of the most significant NPS improvements in regional history. Established enterprise-wide governance cadence and spearheaded cross-functional initiatives affecting hundreds of thousands of customers.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Leadership & Strategy</h3>
+                    <p>Designated as company-wide NPS improvement lead in August 2022, establishing inaugural interdepartmental governance involving C-suite leadership including company President. Led department-wide transformation from waterfall to Agile/Scrum methodology, increasing project delivery velocity by 2.5x. Managed cross-functional teams spanning customer service, logistics, technical development, and analytics.</p>
+
+                    <h3>Key Responsibilities</h3>
+                    <p>Primary liaison between customer experience, technical teams, and executive leadership. Regular reporting to President and Head of Departments on customer sentiment and business impact. Cross-functional collaboration with marketing, sales, logistics, and technical departments. Applied Google Project Management methodologies including Lean Six Sigma for operational improvements.</p>
+
+                    <h3>Major Initiatives</h3>
+                    <p>Designed and deployed customer self-service return requests, internal knowledge base, and one-click partial refund systems. Led operational implementation of Aftership delivery tracking and auto-fulfilment for big/bulky products. Built comprehensive internal knowledge base reducing agent training time and improving consistency. Redesigned customer complaint handling and escalation processes.</p>
+
+                    <h3>Skills Developed</h3>
+                    <p>Executive communication and influencing without authority. Complex stakeholder management across organizational boundaries. Data-driven decision making and metrics development. Change management and organizational transformation. Technology implementation and system integration. Risk assessment and mitigation strategies.</p>
+
+                    <h3>Impact & Recognition</h3>
+                    <p>Increased Net Promoter Score from -40 to +71 over 2 years - the most significant improvement in Samsung Electronics regional history. Reduced customer call and complaint escalations from 2,300/month to 1,100/month while order volume increased 1.6x. Led rapid response team reducing customer service concerns from 3,000 to 800 in 3 weeks. Recognition from Samsung Electronics President for transformation leadership.</p>
+                `
+            },
+            'consultancy-owner': {
+                title: 'IT Consultancy Business Owner',
+                subtitle: 'Independent Consultant | Entrepreneur',
+                marginNotes: [
+                    'Business intelligence',
+                    'Digital transformation',
+                    'SME consulting',
+                    'Data analysis',
+                    'Client acquisition',
+                    'Solution architecture',
+                    'Forward deployment',
+                    'AI integration'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Founded and operated independent consultancy focused on data intelligence and digital transformation for small and medium businesses. Provided forward-deployed engineering services bringing enterprise-level data analysis capabilities to SMEs, enabling them to compete in the AI-driven business landscape.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Business Vision</h3>
+                    <p>Recognized the growing divide between large corporations with access to institutional knowledge and resources for data analysis, versus small and medium businesses forming the foundation of the Australian economy. Developed consultancy model to bridge this gap, enabling SMEs to participate in the data analysis revolution presented by artificial intelligence.</p>
+
+                    <h3>Service Model</h3>
+                    <p>Offered comprehensive business intelligence solutions including data centralization, connection mapping, and key insights extraction. Implemented forward-deployed engineering approach: take solutions to customers, gather feedback, iterate builds, and report back until comprehensive solutions delivered. Focused on making empowered decision-making the real force multiplier rather than just providing data.</p>
+
+                    <h3>Client Acquisition Strategy</h3>
+                    <p>Targeted small and medium businesses seeking to leverage data for competitive advantage. Developed standardized product offerings to maximize client acquisition while maintaining service quality. Created clear service packages setting expectations and demonstrating concrete value. Implemented pricing model balancing fair compensation with SME accessibility.</p>
+
+                    <h3>Technical Implementation</h3>
+                    <p>Delivered reports, action plans, webpages, videos, graphics, software solutions, and strategic guidance. Focused on tracer-based programming and iterative development. Provided both one-time implementations and ongoing retainer services for continuous improvement and support.</p>
+
+                    <h3>Business Development</h3>
+                    <p>Developed marketplace integration services and digital transformation consulting for traditional businesses. Built client acquisition pipeline and standardized delivery processes for scalability. Created framework for delegating work to freelancers while maintaining quality control. Established positive sum game approach emphasizing client success over extractive consulting.</p>
+
+                    <h3>Skills Developed</h3>
+                    <p>Entrepreneurial mindset and business development. Client relationship management and needs assessment. Solution architecture and technical implementation. Project management for consulting engagements. Financial modeling and pricing strategy. Marketing and sales for professional services.</p>
+                `
+            },
+            'regulatory-lead': {
+                title: 'Fair Trading Regulatory Lead',
+                subtitle: 'Samsung Electronics | Mar 2019 - Nov 2020',
+                marginNotes: [
+                    'Regulatory compliance',
+                    'Government liaison',
+                    'Consumer law',
+                    'Risk assessment',
+                    'Process standardization',
+                    'Compliance frameworks',
+                    'Training development',
+                    'Investigation management'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Served as primary contact for Australian Consumer Law government organizations including NSW Fair Trading and ACCC. Implemented comprehensive risk-sensing processes and compliance frameworks, significantly reducing regulatory interventions while maintaining legal compliance and consumer protection.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Regulatory Compliance Management</h3>
+                    <p>Primary liaison between Samsung Electronics and Australian Consumer Law government organizations. Investigated consumer complaints and provided regulatory guidance to business units. Implemented risk-sensing processes and data handling standards ensuring compliance with privacy and consumer protection legislation. Developed compliance frameworks reducing regulatory interventions.</p>
+
+                    <h3>Government Relations</h3>
+                    <p>Maintained ongoing relationships with NSW Fair Trading, ACCC, and other regulatory bodies. Responded to official inquiries and investigations with comprehensive documentation and analysis. Provided guidance to business units on regulatory requirements and compliance strategies. Coordinated internal responses to government audits and compliance reviews.</p>
+
+                    <h3>Process Standardization</h3>
+                    <p>Created standardized response protocols for regulatory inquiries ensuring consistent and compliant communication. Developed investigation procedures and documentation standards. Implemented early warning systems for potential compliance issues. Established reporting mechanisms for tracking regulatory metrics and trends.</p>
+
+                    <h3>Training & Development</h3>
+                    <p>Created regulatory compliance training programs for customer service teams. Developed educational materials on Australian Consumer Law and privacy requirements. Conducted regular training sessions and workshops for frontline staff. Built knowledge base and reference materials for ongoing compliance support.</p>
+
+                    <h3>Key Achievements</h3>
+                    <p>Reduced monthly NSW Fair Trading complaints from 42 to 22, achieving 48% reduction through improved processes and proactive compliance measures. Implemented risk-sensing systems identifying potential issues before escalation. Established framework for handling complex regulatory inquiries requiring multi-department coordination.</p>
+
+                    <h3>Skills Developed</h3>
+                    <p>Legislative interpretation and application. Government liaison and stakeholder management. Investigation techniques and evidence gathering. Risk assessment and mitigation strategies. Policy development and implementation. Cross-cultural communication and diplomacy. Written communication for official correspondence.</p>
+
+                    <h3>Industry Knowledge</h3>
+                    <p>Comprehensive understanding of Australian Consumer Law. Expertise in Privacy Act 1988 and data handling requirements. Knowledge of Fair Trading regulations at state and federal levels. Experience with government procurement and contracting processes. Understanding of consumer protection enforcement mechanisms.</p>
+                `
+            },
+            'service-leader': {
+                title: 'Service Team Leader',
+                subtitle: 'Samsung Electronics | Apr 2016 - Mar 2019',
+                marginNotes: [
+                    'Team leadership',
+                    'Performance management',
+                    'Quality assurance',
+                    'Process optimization',
+                    'Coaching frameworks',
+                    'Operations management',
+                    'Customer service',
+                    'Staff development'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Led customer service team through period of significant growth and operational change. Implemented quality assurance processes, coaching frameworks, and performance management systems while maintaining high service standards and customer satisfaction levels.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Team Leadership & Operations</h3>
+                    <p>Led customer service team responsible for handling customer inquiries, complaints, and service requests across multiple channels. Managed daily operations including scheduling, resource allocation, and performance monitoring. Oversaw team performance against key metrics including response times, resolution rates, and customer satisfaction scores.</p>
+
+                    <h3>Quality Assurance Implementation</h3>
+                    <p>Designed and implemented comprehensive quality assurance framework for customer service interactions. Developed evaluation criteria and scoring systems for assessing agent performance. Created feedback mechanisms and improvement plans based on quality assessments. Established monitoring systems ensuring consistent service delivery and compliance with standards.</p>
+
+                    <h3>Coaching & Development</h3>
+                    <p>Built coaching framework focusing on skill development, performance improvement, and career growth. Conducted regular one-on-one sessions and team training programs. Developed individual development plans aligned with organizational objectives and personal career goals. Implemented mentorship programs pairing experienced agents with new team members.</p>
+
+                    <h3>Process Improvements</h3>
+                    <p>Streamlined customer service workflows and escalation procedures for improved efficiency. Introduced performance monitoring and reporting systems providing real-time insights into team operations. Reduced average handling time through process optimization and technology implementation. Improved first-call resolution rates through training and knowledge management initiatives.</p>
+
+                    <h3>Performance Management</h3>
+                    <p>Established clear performance metrics and expectations aligned with organizational goals. Implemented regular performance review process providing constructive feedback and development opportunities. Created recognition programs celebrating achievements and motivating high performance. Addressed performance issues through progressive coaching and improvement plans.</p>
+
+                    <h3>Skills Developed</h3>
+                    <p>Leadership and team management. Performance coaching and development. Quality assurance methodology. Process optimization and workflow design. Conflict resolution and problem solving. Communication and interpersonal skills. Time management and prioritization. Analytical thinking and data interpretation.</p>
+
+                    <h3>Operational Impact</h3>
+                    <p>Improved team performance metrics across multiple dimensions including customer satisfaction, efficiency, and quality scores. Reduced agent turnover through improved engagement and development opportunities. Enhanced team collaboration and communication. Established foundation for subsequent growth and expansion of customer service operations.</p>
+                `
+            },
+            'policy-graduate': {
+                title: 'Government & Public Policy Graduate',
+                subtitle: 'Flinders University | Academic Achievement',
+                marginNotes: [
+                    'Public administration',
+                    'Policy development',
+                    'Political analysis',
+                    'Economic principles',
+                    'Research methodology',
+                    'Government systems',
+                    'Social policy',
+                    'Legislative process'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Completed comprehensive degree in Government and Public Policy, providing academic foundation for understanding political systems, policy development processes, and administrative structures. Developed analytical skills for evaluating complex policy issues and understanding government decision-making frameworks.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Academic Foundation</h3>
+                    <p>Gained deep understanding of government structures, political processes, and policy development frameworks. Studied theoretical foundations of public administration and practical applications of policy implementation. Analyzed relationships between government institutions, stakeholders, and citizens in democratic societies.</p>
+
+                    <h3>Policy Analysis Skills</h3>
+                    <p>Developed methodologies for analyzing complex policy issues and evaluating potential solutions. Learned to assess policy effectiveness, cost-benefit analysis, and impact assessment techniques. Studied evidence-based policy making and the role of research in informing government decisions.</p>
+
+                    <h3>Government Systems Knowledge</h3>
+                    <p>Comprehensive understanding of Australian political system including federal, state, and local government structures. Knowledge of legislative processes, electoral systems, and political party dynamics. Understanding of public sector management and administrative law principles.</p>
+
+                    <h3>Research & Analysis</h3>
+                    <p>Mastered research methodologies for policy analysis including qualitative and quantitative approaches. Developed skills in data collection, analysis, and interpretation. Learned to communicate complex policy concepts clearly and persuasively to diverse audiences.</p>
+
+                    <h3>Economic & Social Policy</h3>
+                    <p>Studied economic principles underlying policy decisions and their impact on society. Analyzed social policy issues including healthcare, education, welfare, and employment. Understanding of budget processes and financial management in government contexts.</p>
+
+                    <h3>Skills Developed</h3>
+                    <p>Critical thinking and analytical reasoning. Research methodology and data analysis. Policy evaluation and impact assessment. Written and oral communication for policy contexts. Understanding of legislative and regulatory frameworks. Stakeholder analysis and engagement. Problem-solving in complex political environments.</p>
+
+                    <h3>Practical Applications</h3>
+                    <p>Applied academic knowledge to real-world policy challenges through case studies and practical assignments. Developed understanding of how theoretical frameworks translate into practical governance. Prepared for careers in public service, policy analysis, and government relations.</p>
+
+                    <h3>Career Foundation</h3>
+                    <p>Established foundation for subsequent career progression in both government and private sector roles. Understanding of public policy processes proved valuable in regulatory compliance and stakeholder management positions. Analytical skills and research methodologies applicable across diverse professional contexts.</p>
+                `
+            },
+            'defence-cadet': {
+                title: 'Australian Defence Force Cadet',
+                subtitle: 'Australian Defence Force Academy | Military Training',
+                marginNotes: [
+                    'Military discipline',
+                    'Leadership development',
+                    'Team management',
+                    'Strategic thinking',
+                    'Communication skills',
+                    'Operational planning',
+                    'Decision making',
+                    'Physical conditioning'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Role Overview</h3>
+                        <p>Completed cadet training at Australian Defence Force Academy, receiving comprehensive military education and leadership development. Gained practical experience in military operations, team management, and strategic planning while developing discipline and resilience applicable across professional contexts.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Military Training & Education</h3>
+                    <p>Participated in rigorous cadet training program combining academic education with military discipline and practical skills. Learned military customs, traditions, and protocols while developing understanding of defense force structure and operations. Gained exposure to various military branches and career pathways.</p>
+
+                    <h3>Leadership Development</h3>
+                    <p>Developed leadership skills through progressive responsibility and practical command experience. Led teams in training exercises and simulated operations, learning to motivate, direct, and support team members under pressure. Studied military leadership theory and its application in various operational contexts.</p>
+
+                    <h3>Team Management & Coordination</h3>
+                    <p>Learned to build, train, and manage effective teams in challenging environments. Developed skills in task delegation, performance monitoring, and team coordination. Understanding of group dynamics, conflict resolution, and motivation techniques specific to military contexts but transferable to civilian leadership roles.</p>
+
+                    <h3>Strategic & Operational Planning</h3>
+                    <p>Studied military strategy, operational planning, and tactical decision-making processes. Participated in planning exercises developing skills in resource allocation, risk assessment, and contingency planning. Learned to anticipate challenges and develop comprehensive response strategies.</p>
+
+                    <h3>Communication & Briefing Skills</h3>
+                    <p>Completed Military Communication Program developing advanced communication and briefing abilities. Learned to communicate clearly and concisely in high-pressure situations. Developed skills in formal military briefings, report writing, and interpersonal communication across hierarchical structures.</p>
+
+                    <h3>Discipline & Professional Conduct</h3>
+                    <p>Internalized military discipline through structured training and daily routines. Developed attention to detail, punctuality, and professional conduct standards. Understanding of chain of command, protocols, and procedures essential for effective military operations.</p>
+
+                    <h3>Physical & Mental Resilience</h3>
+                    <p>Participated in rigorous physical training programs developing fitness, endurance, and resilience. Learned to perform effectively under physical and mental stress. Developed mental toughness and problem-solving abilities in challenging situations.</p>
+
+                    <h3>Transferable Skills</h3>
+                    <p>Leadership abilities applicable to civilian management roles. Discipline and work ethic transferable to any professional environment. Strategic thinking and planning skills valuable in business contexts. Team management and coordination experience relevant across industries. Communication and briefing skills applicable to corporate settings.</p>
+
+                    <h3>Values & Ethics</h3>
+                    <p>Internalized military values including integrity, loyalty, courage, and commitment. Developed understanding of ethical decision-making and professional conduct. Appreciation for service, duty, and responsibility that informed subsequent career choices and professional approach.</p>
+                `
+            },
+            'project-management': {
+                title: 'Google Project Management Professional',
+                subtitle: 'Professional Certification | Complete 6-Course Program',
+                marginNotes: [
+                    'Agile methodologies',
+                    'Scrum framework',
+                    'Lean Six Sigma',
+                    'Project planning',
+                    'Risk management',
+                    'Stakeholder engagement',
+                    'Budget control',
+                    'Quality assurance'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Certification Overview</h3>
+                        <p>Completed comprehensive Google Project Management Certificate program covering project foundations, methodologies, and execution. Gained expertise in both traditional waterfall and modern Agile approaches, equipping me to manage projects of varying complexity across different industries and organizational contexts.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Program Structure</h3>
+                    <p>Completed intensive 6-course program covering all aspects of professional project management. Each course built upon previous knowledge, progressing from foundational concepts through advanced methodologies and practical application. Combined theoretical knowledge with hands-on projects and real-world case studies.</p>
+
+                    <h3>Project Management Foundations</h3>
+                    <p>Mastered fundamental project management concepts including project lifecycle, initiation, planning, execution, monitoring, and closure. Learned to define project scope, objectives, and success criteria. Understanding of project manager roles, responsibilities, and competencies required for successful project delivery.</p>
+
+                    <h3>Agile & Scrum Methodologies</h3>
+                    <p>Developed expertise in Agile project management approaches including Scrum framework, Kanban methodology, and hybrid models. Learned to facilitate sprint planning, daily standups, retrospectives, and reviews. Understanding of user stories, product backlogs, and incremental delivery approaches.</p>
+
+                    <h3>Lean Six Sigma Integration</h3>
+                    <p>Studied Lean Six Sigma principles and their application to process improvement within project management. Learned to identify and eliminate waste, reduce variation, and improve quality through systematic methodology. Understanding of DMAIC (Define, Measure, Analyze, Improve, Control) process.</p>
+
+                    <h3>Risk Management & Mitigation</h3>
+                    <p>Developed comprehensive approach to identifying, assessing, and managing project risks. Learned to create risk registers, develop mitigation strategies, and establish contingency plans. Understanding of qualitative and quantitative risk analysis techniques and risk response planning.</p>
+
+                    <h3>Stakeholder Management</h3>
+                    <p>Mastered stakeholder identification, analysis, and engagement strategies. Learned to manage stakeholder expectations, facilitate communication, and resolve conflicts. Understanding of stakeholder mapping, influence analysis, and relationship management techniques.</p>
+
+                    <h3>Budget & Resource Management</h3>
+                    <p>Developed skills in project budgeting, cost estimation, and financial control. Learned to allocate resources effectively, monitor expenditures, and manage project financials. Understanding of earned value management, cost-benefit analysis, and financial reporting.</p>
+
+                    <h3>Tools & Technologies</h3>
+                    <p>Gained proficiency with industry-standard project management tools including JIRA, Asana, Trello, and Microsoft Project. Learned to leverage technology for project tracking, collaboration, and reporting. Understanding of digital project management tools and integration capabilities.</p>
+
+                    <h3>Practical Application</h3>
+                    <p>Applied learned methodologies to real project scenarios and case studies. Developed project plans, risk assessments, and stakeholder management strategies. Created comprehensive project documentation and presentation materials demonstrating mastery of concepts.</p>
+
+                    <h3>Professional Impact</h3>
+                    <p>Certification provided formal recognition of project management expertise and credibility in the field. Enabled immediate application of methodologies in professional settings, leading to improved project outcomes and team performance. Foundation for continued professional development and advanced certifications.</p>
+                `
+            },
+            'data-science': {
+                title: 'Data Science & AI Specialist',
+                subtitle: 'IBM Professional Certification | Python for Data Science and AI Development',
+                marginNotes: [
+                    'Python programming',
+                    'Statistical analysis',
+                    'Machine learning',
+                    'Data visualization',
+                    'Pandas & NumPy',
+                    'Data preprocessing',
+                    'AI development',
+                    'Predictive modeling'
+                ],
+                content: `
+                    <div class="project-header">
+                        <h3>Certification Overview</h3>
+                        <p>Completed IBM Python for Data Science and AI Development certification, gaining comprehensive skills in data analysis, machine learning, and artificial intelligence development. Acquired practical experience with industry-standard tools and techniques for extracting insights from data and building intelligent systems.</p>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h3>Python Programming Foundation</h3>
+                    <p>Mastered Python programming specifically for data science applications including data manipulation, analysis, and visualization. Gained proficiency in Python syntax, data structures, and object-oriented programming concepts relevant to data processing workflows.</p>
+
+                    <h3>Data Analysis Libraries</h3>
+                    <p>Developed expertise with essential Python data science libraries including Pandas for data manipulation, NumPy for numerical computing, and Matplotlib/Seaborn for data visualization. Learned to clean, transform, and analyze datasets of varying complexity and structure.</p>
+
+                    <h3>Statistical Analysis Skills</h3>
+                    <p>Applied statistical methods for data analysis including descriptive statistics, hypothesis testing, and correlation analysis. Understanding of probability theory, distributions, and statistical significance testing. Ability to interpret results and communicate findings effectively.</p>
+
+                    <h3>Machine Learning Fundamentals</h3>
+                    <p>Studied machine learning algorithms and techniques including supervised and unsupervised learning approaches. Implemented classification, regression, clustering, and dimensionality reduction algorithms. Understanding of model evaluation, cross-validation, and hyperparameter tuning.</p>
+
+                    <h3>Data Preprocessing & Cleaning</h3>
+                    <p>Mastered techniques for data preprocessing including handling missing values, outlier detection, feature engineering, and data transformation. Learned to prepare datasets for analysis and machine learning model training. Understanding of data quality issues and validation methods.</p>
+
+                    <h3>AI Development Concepts</h3>
+                    <p>Explored artificial intelligence development including neural networks, deep learning fundamentals, and AI application development. Understanding of AI concepts, frameworks, and implementation approaches. Exposure to current AI trends and practical applications.</p>
+
+                    <h3>Data Visualization Techniques</h3>
+                    <p>Developed skills in creating effective data visualizations using Python libraries. Learned to choose appropriate chart types, design clear and informative graphics, and communicate data insights visually. Understanding of visualization best practices and storytelling with data.</p>
+
+                    <h3>Real-World Applications</h3>
+                    <p>Applied data science techniques to practical problems through hands-on projects and case studies. Worked with datasets from various domains to extract insights, build predictive models, and develop data-driven recommendations. Experience with end-to-end data science workflows.</p>
+
+                    <h3>Tools & Environment</h3>
+                    <p>Gained proficiency with Jupyter Notebooks for interactive data analysis and development. Understanding of Python development environments, package management, and version control. Experience with data science workflows and reproducible research practices.</p>
+
+                    <h3>Technical Communication</h3>
+                    <p>Developed ability to communicate technical findings to non-technical audiences. Learned to create clear documentation, explain complex concepts simply, and present data-driven insights effectively. Understanding of storytelling with data and visual communication principles.</p>
+
+                    <h3>Career Integration</h3>
+                    <p>Data science skills enhanced capabilities in business analysis, project management, and customer experience roles. Enabled data-driven decision making and advanced analytics in professional contexts. Foundation for continued learning in AI, machine learning, and advanced data science applications.</p>
+                `
+            }
+        };
+
+        // Role hover and click functionality
+        const roleImage = document.getElementById('role-image');
+        const roleLinks = document.querySelectorAll('.interactive-list-item a');
+        const roleContainer = document.getElementById('role-container');
+        const roleContent = document.querySelector('.blog-post-content');
 
         // Hide image initially
-        skillImage.style.opacity = '0';
+        roleImage.style.opacity = '0';
 
-        skillLinks.forEach(link => {
+        roleLinks.forEach(link => {
             link.addEventListener('mouseenter', function() {
-                // Show placeholder for now
-                skillImage.style.opacity = '1';
-                skillImage.src = '';
-                skillImage.style.backgroundColor = '#e5e7eb';
+                // Show placeholder for roles
+                roleImage.style.opacity = '1';
+                roleImage.src = '';
+                roleImage.style.backgroundColor = '#e5e7eb';
             });
 
             link.addEventListener('mouseleave', function() {
                 // Hide image immediately
-                skillImage.style.opacity = '0';
+                roleImage.style.opacity = '0';
+            });
+
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const roleId = this.getAttribute('data-role');
+                
+                if (roleId && roleData[roleId]) {
+                    displayRole(roleId);
+                    // Update URL for shareable link
+                    const url = new URL(window.location);
+                    url.searchParams.set('role', roleId);
+                    window.history.pushState({}, '', url);
+                }
             });
         });
+
+        // Check for URL parameter on page load
+        function loadRoleFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roleId = urlParams.get('role');
+            
+            if (roleId && roleData[roleId]) {
+                displayRole(roleId);
+                // Highlight the active link
+                const activeLink = document.querySelector(`[data-role="${roleId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-project');
+                }
+            }
+        }
+
+        // Load role from URL when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRoleFromURL();
+        });
+
+        function displayRole(roleId) {
+            const role = roleData[roleId];
+            if (!role) return;
+
+            // Create margin notes HTML
+            const marginNotesHTML = role.marginNotes.map(note => 
+                `<div class="margin-note"><em>${note}</em></div>`
+            ).join('');
+
+            // Create the role HTML with 80/20 split
+            roleContent.innerHTML = `
+                <div class="blog-post-layout">
+                    <div class="margin-notes-column">
+                        ${marginNotesHTML}
+                    </div>
+                    <div class="main-content-column">
+                        <h3>${role.title}</h3>
+                        <p class="role-subtitle">${role.subtitle}</p>
+                        <div class="blog-post-text">
+                            ${role.content}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Show the role container
+            roleContainer.style.display = 'block';
+            
+            // Smooth scroll to the role
+            roleContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     </script>
 </body>
 </html>

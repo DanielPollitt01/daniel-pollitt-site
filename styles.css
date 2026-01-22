@@ -16,6 +16,9 @@
   --text-muted: #6b7280;
   --border-light: #e5e7eb;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* Article heading sizing - ADJUST THESE VALUES TO CHANGE ARTICLE HEADING SIZES */
+  --article-main-heading-size: 2rem;    /* Main titles (e.g., "Woolworths Marketplace Integration") */
+  --article-subheading-size: 1.3rem;     /* Subheadings (e.g., "Business Outcomes", "Challenge & Context") */
 }
 
 /* Typography */
@@ -900,11 +903,23 @@ a {
 .main-content-column h3 {
   color: var(--text-dark);
   font-weight: 600;
-  font-size: 2rem;
+  font-size: var(--article-main-heading-size);
   line-height: 1.3;
   margin-bottom: 2rem;
   border-bottom: 2px solid var(--green-primary);
   padding-bottom: 0.5rem;
+}
+
+/* Article subheadings - smaller than main headings */
+.blog-post-text h3,
+.traditional-content h3:not(.main-content-column h3) {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: var(--article-subheading-size);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .blog-post-text {
@@ -968,6 +983,16 @@ a {
   
   .main-content-column h3 {
     font-size: 1.5rem;
+  }
+  
+  /* Keep article headings consistent on mobile */
+  .main-content-column h3 {
+    font-size: var(--article-main-heading-size);
+  }
+  
+  .blog-post-text h3,
+  .traditional-content h3:not(.main-content-column h3) {
+    font-size: var(--article-subheading-size);
   }
   
   .blog-post-text {

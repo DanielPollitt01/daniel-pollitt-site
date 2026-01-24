@@ -100,3 +100,53 @@ npx axe index.html                  # Accessibility testing
 - **Device Testing**: Mobile, tablet, desktop viewports
 - **Accessibility Testing**: Screen reader testing, keyboard-only navigation
 - **Link Validation**: Ensure all internal links work correctly
+
+## PAI Workflows
+
+### 1. Consistent AI Image Integration
+**Objective**: Generate themed snapshots (e.g., Hiromix style) and integrate them into interactive hover lists.
+
+**Tools & Environment**:
+- **Pack Location**: `/home/dan/projects/packs/ai_image_generation`
+- **Setup**: Requires a virtual environment (`venv`) with dependencies from `requirements.txt` and an `.env` file with `OPENAI_API_KEY`.
+- **Command**: 
+  ```bash
+  source venv/bin/activate
+  python3 src/cli/main.py generate --style [style_name] --scene "[prompt]" --output "/home/dan/projects/active/resume_website" --name "[role_id]"
+  ```
+
+**Procedure**:
+1. **Generate**: Run the CLI tool from the pack directory to generate PNGs.
+2. **Normalize**: The tool appends timestamps (e.g., `role_timestamp_001.png`). Rename these to clean, predictable names (e.g., `role.png`) in the website root.
+3. **Trigger**: Add `data-image="role.png"` to the `<a>` tag in the interactive list.
+4. **Logic**: Ensure the page's `<script>` handles `mouseenter` by updating the target `img.src` from the `data-image` attribute and setting `opacity: 1`.
+5. **Reset**: Handle `mouseleave` by setting `opacity: 0`.
+
+### 2. Automated Blog Creation
+**Objective**: Streamline the process of adding new blog posts with integrated AI image generation.
+
+**Tools & Environment**:
+- **Source Folder**: `/home/dan/projects/active/resume_website/content/posts` (Markdown files with YAML frontmatter)
+- **Script**: `/home/dan/projects/active/resume_website/scripts/create_blog.py`
+- **Dependency**: Uses the `venv` from `/home/dan/projects/packs/ai_image_generation`.
+
+**Frontmatter Requirements**:
+```yaml
+title: "Post Title"
+date: "YYYY-MM-DD"
+style: "hiromix" # or any other style guide name
+master_image_prompt: "Description for the hover preview image"
+margin_notes:
+  - "Note 1"
+  - "Note 2"
+```
+
+**Workflow**:
+1. **Draft**: Create a `.md` file in `content/posts/`.
+2. **In-Body Generation**: Use `[[generate: "prompt"]]` within the Markdown body to trigger additional image generations and auto-injection.
+3. **Execute**: 
+   ```bash
+   source /home/dan/projects/packs/ai_image_generation/venv/bin/activate
+   python3 scripts/create_blog.py content/posts/your-post.md
+   ```
+4. **Verification**: Check `blog.html` for the new entry in `blogPosts` and the interactive list.

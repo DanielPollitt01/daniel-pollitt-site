@@ -68,31 +68,31 @@
             <div class="left-content">
                 <ol class="interactive-list">
                     <li class="interactive-list-item">
-                        <a href="#" data-role="ecommerce-lead">eCommerce Customer Experience Lead</a>
+                        <a href="#" data-role="ecommerce-lead" data-image="ecommerce-lead.png">eCommerce Customer Experience Lead</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="consultancy-owner">IT Consultancy Business Owner</a>
+                        <a href="#" data-role="consultancy-owner" data-image="consultancy-owner.png">IT Consultancy Business Owner</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="regulatory-lead">Fair Trading Regulatory Lead</a>
+                        <a href="#" data-role="regulatory-lead" data-image="regulatory-lead.png">Fair Trading Regulatory Lead</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="service-leader">Service Team Leader</a>
+                        <a href="#" data-role="service-leader" data-image="service-leader.png">Service Team Leader</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="policy-graduate">Government & Public Policy Graduate</a>
+                        <a href="#" data-role="policy-graduate" data-image="policy-graduate.png">Government & Public Policy Graduate</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="defence-cadet">Australian Defence Force Cadet</a>
+                        <a href="#" data-role="defence-cadet" data-image="defence-cadet.png">Australian Defence Force Cadet</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="project-management">Google Project Management Professional</a>
+                        <a href="#" data-role="project-management" data-image="project-management.png">Google Project Management Professional</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="data-science">Data Science & AI Specialist</a>
+                        <a href="#" data-role="data-science" data-image="data-science.png">Data Science & AI Specialist</a>
                     </li>
                     <li class="interactive-list-item">
-                        <a href="#" data-role="cybersecurity">Cybersecurity & Privacy Specialist</a>
+                        <a href="#" data-role="cybersecurity" data-image="cybersecurity.png">Cybersecurity & Privacy Specialist</a>
                     </li>
                 </ol>
             </div>
@@ -552,10 +552,17 @@
 
         roleLinks.forEach(link => {
             link.addEventListener('mouseenter', function() {
-                // Show placeholder for roles
-                roleImage.style.opacity = '1';
-                roleImage.src = '';
-                roleImage.style.backgroundColor = '#e5e7eb';
+                const imageData = this.getAttribute('data-image');
+                if (imageData) {
+                    roleImage.src = imageData;
+                    roleImage.style.backgroundColor = 'transparent';
+                    roleImage.style.opacity = '1';
+                } else {
+                    // Show placeholder for roles
+                    roleImage.style.opacity = '1';
+                    roleImage.src = '';
+                    roleImage.style.backgroundColor = '#e5e7eb';
+                }
             });
 
             link.addEventListener('mouseleave', function() {

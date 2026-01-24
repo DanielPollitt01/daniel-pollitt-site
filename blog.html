@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Resume Website</title>
-    <link rel="stylesheet" href="styles.css?v=1.6">
+    <link rel="stylesheet" href="styles.css?v=1.7">
 </head>
 <body>
     <div class="nav-symbol" id="navSymbol" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0">
@@ -79,7 +79,6 @@
                     <li class="interactive-list-item">
                         <a href="#" data-post="technical-insights">Making a habit of having habits</a>
                     </li>
-
                     <li class="interactive-list-item">
                         <a href="#" data-post="industry-trends">Successful people do things that unsuccessful people dont</a>
                     </li>
@@ -121,6 +120,7 @@
     </div>
 
     <script>
+        console.log('Blog script initialized. Posts loaded:', Object.keys(blogPosts));
         // Blog post data
         const blogPosts = {
             'the-technological-republic': {

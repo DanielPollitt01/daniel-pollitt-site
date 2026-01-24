@@ -120,7 +120,6 @@
     </div>
 
     <script>
-        console.log('Blog script initialized. Posts loaded:', Object.keys(blogPosts));
         // Blog post data
         const blogPosts = {
             'the-technological-republic': {
@@ -165,6 +164,8 @@
                 `
             }
         };
+
+        console.log('Blog posts loaded:', Object.keys(blogPosts));
 
         // Interactive blog posts hover and click functionality
         const postImage = document.getElementById('post-image');

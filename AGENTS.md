@@ -346,7 +346,7 @@ Resolved issues with image scaling and borders in hover previews, and iterated o
 
 #### 2. Iterative AI Image Generation
 - **Specificity in Prompts**: Explicitly requesting "no text" and specific details (e.g., "tan/brown military boots" for ADF) corrected common AI generation errors.
-- **Pivot to Abstraction**: When realistic representations (people/offices) felt "off" or cluttered, switching to "abstract architectural representations" or "stylized patterns" produced more professional and on-theme results.
+- **Pivot to Abstraction**: When realistic representations (people/offices) felt "off" or cluttered, switching to "stylized patterns" produced more professional and on-theme results.
 - **Drafting Prompts**: Sharing the full prompt with the user before generation allowed for collaborative refinement and reduced wasted iterations.
 
 #### 3. Versioned Cache Busting
@@ -374,3 +374,29 @@ Resolved issues with image scaling and borders in hover previews, and iterated o
 3. **Prompt Guardrails**: Always include negative constraints like "no text", "no people" (if applicable), and "high contrast" to maintain the "Hiromix" aesthetic.
 4. **Unified Cache Busting**: When updating assets, update the CSS version in *every* HTML file that uses those assets, even if the CSS file itself didn't change significantly, as it forces the browser to re-evaluate the DOM and its linked resources.
 5. **Prompt Approval**: Before running expensive or slow AI generations, present the proposed prompt to the user for final sign-off.
+
+## Lessons Learned: Creative Asset Generation (2026-01-25)
+
+### Session Overview
+Successfully generated and integrated 4 new thematic blog images and 1 replacement logo. Refined prompt engineering techniques to move from strictly abstract patterns to literal yet stylistic scenes that maintain site-wide aesthetic consistency.
+
+### What Worked Well
+
+#### 1. Transition to Narrative Imagery
+- **Literal Scenes**: Moving from "abstract patterns" to "literal objects" (clocks, boots, CRT monitors) added depth and narrative interest to the hover previews while staying within the lo-fi constraints.
+- **Contextual Relevance**: Using objects that metaphorically represent the blog content (e.g., alarm clocks for habits, CRT monitor for AI struggle) improved the user experience.
+
+#### 2. Prompt Engineering Refinements
+- **Negative Constraints**: Consistently using "no text" and "no people" prevented common AI artifacts and ensured the imagery felt professional and focused. For book stacks, specify "no titles on books" to prevent AI from generating illegible text.
+- **Technical Style Tokens**: Combining "high contrast flash photography", "90s digital grain", and "lo-fi aesthetic" created a consistent visual language across all generated assets.
+- **Scene Composition**: Specifying "macro shot" or "stark shadows" helped control the visual weight and focus of the images.
+
+### Key Prompts Developed
+- **Habits**: "A stack of vintage alarm clocks on a wooden surface, high contrast flash photography, 90s digital grain, harsh shadows, lo-fi aesthetic, no text"
+- **Success/Effort**: "A pair of well-worn leather boots next to a stack of old leather-bound books, high contrast flash photography, 90s grainy aesthetic, absolutely no text, no letters, no words, no titles on books, lo-fi grain"
+- **AI/Tech**: "A vintage CRT monitor displaying green glitch static and lines of code in a dark room, messy wires, high contrast flash, 90s lo-fi grain, no text"
+- **Influence/Mood**: "A macro shot of a rain-streaked window pane at night with blurred distant city lights, high contrast flash, 90s grainy photography, melancholic lo-fi vibe, no text"
+
+### Technical Workflow Improvements
+- **Standardized Naming**: Adopted the `blog-[id]-master.png` convention for all hover preview images to maintain a clean root directory.
+- **Unified Cache Busting**: Implementing site-wide version bumps (e.g., `v=3.0` -> `v=3.1`) for every asset update session ensures all users see the latest visuals without manual intervention.

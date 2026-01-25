@@ -290,3 +290,45 @@ python3 scripts/create_blog.py content/posts/the-technological-republic.md
 3. Add automated browser cache testing
 4. Document CSS version numbers in a changelog
 5. Consider moving blog posts data to external JSON file to avoid manual HTML editing
+
+## Lessons Learned: Image Integration & Refinement
+
+### Session Overview (2026-01-25)
+Resolved issues with image scaling and borders in hover previews, and iterated on AI image generation to achieve high-quality abstract visuals for professional roles.
+
+### What Worked Well
+
+#### 1. CSS Scaling Fixes
+- **Responsive Aspect Ratio**: Using `height: auto`, `max-height`, and `object-fit: contain` solved the cropping issue. This ensures images of any aspect ratio are fully visible without distortion or clipping.
+- **Clean Aesthetic**: Removing `border` and `background-color` from the hover display classes allowed images (especially those with transparency) to blend seamlessly with the site's minimalist design.
+
+#### 2. Iterative AI Image Generation
+- **Specificity in Prompts**: Explicitly requesting "no text" and specific details (e.g., "tan/brown military boots" for ADF) corrected common AI generation errors.
+- **Pivot to Abstraction**: When realistic representations (people/offices) felt "off" or cluttered, switching to "abstract architectural representations" or "stylized patterns" produced more professional and on-theme results.
+- **Drafting Prompts**: Sharing the full prompt with the user before generation allowed for collaborative refinement and reduced wasted iterations.
+
+#### 3. Versioned Cache Busting
+- Consistently incrementing the CSS version (e.g., `v=1.9` -> `v=2.2`) across all HTML files successfully forced browser refreshes for both CSS and the newly generated assets.
+
+### Issues Encountered & Solutions
+
+#### Issue 1: Image Cropping
+**Problem**: Images were holding horizontal scale but being cut off at the top/bottom.
+**Root Cause**: Fixed `height: 200px` combined with `object-fit: cover`.
+**Solution**: Changed to `height: auto`, `max-height: 300px`, and `object-fit: contain`.
+
+#### Issue 2: Tooling Path Discrepancy
+**Problem**: Documentation pointed to `/home/dan/projects/packs/ai_image_generation`, but the active tool was at `/home/dan/projects/active/ai-image-generation`.
+**Solution**: Used `find` and `ls` to locate the active project directory and correct the path in the CLI commands.
+
+#### Issue 3: Style Guide Naming
+**Problem**: Requesting style `--style hiromix` failed because the required key in the system was `hiromix_style_90s`.
+**Solution**: Inspected `ai_image_system/style_guides/` to find the exact filename/key.
+
+### Best Practices for Image Updates
+
+1. **Archive Before Replace**: Always rename existing images (e.g., `filename_old.png`) instead of overwriting immediately. This allows for easy rollbacks.
+2. **Abstract > Realistic**: For professional portfolios, abstract representations often integrate better with minimalist themes than realistic stock-style images.
+3. **Prompt Guardrails**: Always include negative constraints like "no text", "no people" (if applicable), and "high contrast" to maintain the "Hiromix" aesthetic.
+4. **Unified Cache Busting**: When updating assets, update the CSS version in *every* HTML file that uses those assets, even if the CSS file itself didn't change significantly, as it forces the browser to re-evaluate the DOM and its linked resources.
+5. **Prompt Approval**: Before running expensive or slow AI generations, present the proposed prompt to the user for final sign-off.

@@ -107,7 +107,7 @@ npx axe index.html                  # Accessibility testing
 **Objective**: Generate themed snapshots (e.g., Hiromix style) and integrate them into interactive hover lists.
 
 **Tools & Environment**:
-- **Pack Location**: `/home/dan/projects/packs/ai_image_generation`
+- **Pack Location**: `/home/dan/projects/active/ai-image-generation`
 - **Setup**: Requires a virtual environment (`venv`) with dependencies from `requirements.txt` and an `.env` file with `OPENAI_API_KEY`.
 - **Command**: 
   ```bash
@@ -128,7 +128,7 @@ npx axe index.html                  # Accessibility testing
 **Tools & Environment**:
 - **Source Folder**: `/home/dan/projects/active/resume_website/content/posts` (Markdown files with YAML frontmatter)
 - **Script**: `/home/dan/projects/active/resume_website/scripts/create_blog.py`
-- **Dependency**: Uses the `venv` from `/home/dan/projects/packs/ai_image_generation`.
+- **Dependency**: Uses the `venv` from `/home/dan/projects/active/ai-image-generation`.
 
 **Frontmatter Requirements**:
 ```yaml
@@ -146,10 +146,24 @@ margin_notes:
 2. **In-Body Generation**: Use `[[generate: "prompt"]]` within the Markdown body to trigger additional image generations and auto-injection.
 3. **Execute**: 
    ```bash
-   source /home/dan/projects/packs/ai_image_generation/venv/bin/activate
-   python3 scripts/create_blog.py content/posts/your-post.md
+    source /home/dan/projects/active/ai-image-generation/venv/bin/activate
+    python3 scripts/create_blog.py content/posts/your-post.md
+
    ```
 4. **Verification**: Check `blog.html` for the new entry in `blogPosts` and the interactive list.
+
+### 3. Responsive Article Images
+**Objective**: Ensure images embedded within articles (blog posts, projects) are visually balanced and don't overwhelm the viewport on high-resolution displays.
+
+**Implementation**:
+- **CSS Rule**: A global rule in `styles.css` targets `img` tags within `.blog-post-text`, `.traditional-content`, and `.post-embedded-image`.
+- **Constraints**: 
+  - `max-height: 50vh`: Limits image height to 50% of the viewport.
+  - `max-width: 100%`: Ensures horizontal fit.
+  - `width: auto; height: auto`: Preserves aspect ratio.
+- **Styling**: Center alignment (`margin: 2rem auto`), subtle border-radius, and shadow for professional presentation.
+
+**Automation**: The `create_blog.py` script generates clean HTML without inline styles, allowing the global CSS to handle all sizing and presentation.
 
 ## Lessons Learned: Blog Creation & Debugging Session
 
@@ -260,7 +274,7 @@ grep -F 'pattern' [file]              # Fixed string search
 
 #### Blog Creation
 ```bash
-source /home/dan/projects/packs/ai_image_generation/venv/bin/activate
+source /home/dan/projects/active/ai-image-generation/venv/bin/activate
 python3 scripts/create_blog.py content/posts/the-technological-republic.md
 ```
 
@@ -290,6 +304,34 @@ python3 scripts/create_blog.py content/posts/the-technological-republic.md
 3. Add automated browser cache testing
 4. Document CSS version numbers in a changelog
 5. Consider moving blog posts data to external JSON file to avoid manual HTML editing
+
+### Session Overview (2026-01-25)
+Successfully implemented site-wide responsive image constraints for article content, resolving issues with excessively large images on high-resolution displays.
+
+### What Worked Well
+
+#### 1. Site-Wide CSS Normalization
+- **Global Rule**: Moving from inline styles in `create_blog.py` to a global CSS rule in `styles.css` ensured consistency across all articles (blog, projects, philosophy).
+- **Viewport-Relative Sizing**: Using `max-height: 50vh` proved effective for maintaining readability by ensuring images never dominate more than half the vertical space, regardless of screen resolution.
+
+#### 2. Clean Automation
+- **Script Refinement**: Updated `create_blog.py` to output clean HTML (`<img>` tags without inline `width`/`height`), delegating all styling to the CSS architecture.
+- **Legacy Cleanup**: Successfully identified and updated existing blog posts in `blog.html` to remove hardcoded styles, bringing the entire history into compliance with the new standard.
+
+#### 3. Proactive Cache Busting
+- **Unified Versioning**: Bumping the CSS version across all HTML files ensured that the new layout constraints were applied immediately for the user without requiring manual cache clearing.
+
+### Issues Encountered & Solutions
+
+#### Issue: Oversized Article Images
+**Problem**: Images in blog posts were set to `width: 100%`, making them massive on 1920x1080 screens and requiring excessive scrolling.
+**Solution**: Implemented `max-height: 50vh`, `width: auto`, and `max-width: 100%` in `styles.css`.
+
+### Best Practices Established
+
+1. **Delegate Styling to CSS**: Avoid inline styles in automation scripts. Use semantic classes and target them in the main stylesheet.
+2. **Relative Height Constraints**: For content-heavy pages, use `vh` units for large assets to ensure they scale relative to the browser window.
+3. **Unified Versioning**: When updating global CSS, update the version parameter in ALL HTML files, even if the content hasn't changed.
 
 ## Lessons Learned: Image Integration & Refinement
 

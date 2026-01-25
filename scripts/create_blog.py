@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Paths
 SITE_ROOT = Path("/home/dan/projects/active/resume_website")
-PACK_PATH = Path("/home/dan/projects/packs/ai_image_generation")
+PACK_PATH = Path("/home/dan/projects/active/ai-image-generation")
 PACK_CLI = PACK_PATH / "src/cli/main.py"
 VENV_PYTHON = PACK_PATH / "venv/bin/python3"
 BLOG_HTML_PATH = SITE_ROOT / "blog.html"
@@ -88,7 +88,7 @@ def process_blog_post(md_path):
         img_name = f"blog-{slug}-img-{hash(prompt) % 10000}"
         final_img = run_image_gen(prompt, style, img_name)
         if final_img:
-            return f'</p><div class="post-embedded-image"><img src="{final_img}" alt="Embedded visual" style="width: 100%; height: auto; margin: 1rem 0; border: 1px solid var(--border-light);"></div><p>'
+            return f'</p><div class="post-embedded-image"><img src="{final_img}" alt="Embedded visual"></div><p>'
         return ""
 
     body_with_images = re.sub(r'\[\[generate: "(.*?)"\]\]', replace_gen_tag, body)

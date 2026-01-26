@@ -400,3 +400,109 @@ Successfully generated and integrated 4 new thematic blog images and 1 replaceme
 ### Technical Workflow Improvements
 - **Standardized Naming**: Adopted the `blog-[id]-master.png` convention for all hover preview images to maintain a clean root directory.
 - **Unified Cache Busting**: Implementing site-wide version bumps (e.g., `v=3.0` -> `v=3.1`) for every asset update session ensures all users see the latest visuals without manual intervention.
+
+## Content & Writing Style Guidelines
+
+### Voice & Tone
+- **Conversational & Personal**: Mirror the tone of the blog entries, narrative-driven but grounded in facts and logic.
+- **Direct & Kinetic**: Get straight to the core concept. Use direct statements following the pattern: "Doing [action] led to [outcome] which had [impact]."
+- **Fact-Based Logic**: Focus on the technical, operational, and logical details of a task rather than emotional responses or "how it felt."
+- **Detail-Oriented**: Stick to specifics, technical implementations, and concrete outcomes. Avoid vague or abstract statements.
+
+### Structural & Grammatical Constraints
+- **No Em Dashes**: Replace all em dashes (—) with commas for cleaner, more conversational flow.
+- **Direct Framing**: Avoid "It wasn't about X, it was about Y" patterns. State the core concept directly without contrasting what it's not.
+  - ❌ Bad: "This wasn't about catching mistakes—it was about building a system for continuous improvement."
+  - ✅ Good: "Creating feedback mechanisms that turned quality assessments into actionable improvement plans built a system for continuous improvement."
+- **Buzzword Prohibition**: Strictly avoid corporate clichés and dramatic language:
+  - Banned: "palpable", "spearheading", "walking into a storm", "synergy", "leverage", "touch base", "move the needle"
+  - Avoid overly dramatic framing like "facing severe challenges" or "critical junctures"
+- **Australian English**: Always use AU spelling consistently:
+  - optimisation (not optimization)
+  - standardised (not standardized)
+  - realise (not realize)
+  - programme (not program, except in technical contexts like "C programming")
+  - centralised (not centralized)
+  - specialised (not specialized)
+  - organise/organisation (not organize/organization)
+
+### Content Structure Patterns
+- **Problem → Solution → Impact**: Structure narratives around what was broken, what you built/did, and what measurable result occurred.
+- **Technical Specificity**: Name actual tools, frameworks, and methodologies (e.g., "spaCy models and DuckDB" not "advanced NLP tools").
+- **Margin Notes as Themes**: Use margin notes to highlight key concepts, technical tools, or thematic elements rather than generic skill categories.
+
+### Lessons Learned: Portfolio Refactoring (2026-01-26)
+
+**Session Overview**: Rewrote all content on About and Projects pages to adopt a conversational, blog-like tone while maintaining technical depth and factual accuracy.
+
+#### What Worked Well
+
+1. **Narrative-First Approach**: Transforming rigid corporate sections (Overview, Initiatives, Skills) into cohesive stories with a clear logical progression made the content more engaging and readable.
+
+2. **First-Person Voice**: Using "I" and "my" brought personal perspective to the forefront, matching the reflective tone of blog entries without becoming emotional or subjective.
+
+3. **Direct Impact Statements**: Restructuring sentences to follow "doing XYZ led to XYZ which had impact XYZ" pattern created clearer cause-and-effect narratives.
+
+4. **Technical Detail Preservation**: Maintained all key technical details (NLP pipeline, DuckDB, SIEM/UEBA, API integration) while embedding them in natural narrative flow.
+
+5. **Thematic Margin Notes**: Updated margin notes from generic corporate tags to thematic concepts that better reflect the actual work:
+   - "Cross-functional leadership" → "Interdepartmental governance"
+   - "Data storage solutions" → "The NAS transition"
+   - "Skills developed" → Specific technical implementations
+
+#### What Didn't Work (and Was Fixed)
+
+1. **Em Dashes (—)**: Initial draft used em dashes extensively for emphasis and parenthetical statements. These felt too formal and interrupted the conversational flow. Replaced all with commas.
+   - Before: "Customer service was disconnected from logistics—logistics from technical development"
+   - After: "Customer service was disconnected from logistics, logistics from technical development"
+
+2. **"It Wasn't About X, It Was About Y" Framing**: This construction felt indirect and defensive. Replaced with direct statements of what the work actually accomplished.
+   - Before: "This wasn't about catching mistakes—it was about building a system for continuous improvement."
+   - After: "Creating feedback mechanisms that turned quality assessments into actionable improvement plans built a system for continuous improvement."
+
+3. **Dramatic Language**: Initial draft included phrases like "walking into a storm" and "palpable disconnect" which felt too dramatic for a professional portfolio. Removed all dramatic metaphors in favor of direct problem statements.
+   - Before: "When I stepped into the role, I was walking into a bit of a storm. There was a palpable disconnect..."
+   - After: "When I was designated as the NPS improvement lead in August 2022, Samsung's eCommerce operation was sitting in the bottom performance quantile. The problem was systemic."
+
+4. **Overly Abstract Language**: Removed vague phrases like "demonstrated craftsmanship" and "thoughtful creation" in favor of specific technical choices.
+   - Before: "Required solution that demonstrates craftsmanship while maintaining authentic voice"
+   - After: "Maintaining full control over the DOM, performance, and user experience drove this choice"
+
+#### Specific Examples of Improvements
+
+**Government & Public Policy Section**:
+- Added graduation date (Nov 2015) to subtitle
+- Added new section on SA Chief Scientist innovation project as the foundational "origin story" for data-driven approach
+- Updated margin notes to reflect this foundational work
+
+**eCommerce CX Lead Section**:
+- Replaced generic "Leadership & Strategy" headers with specific technical sections like "The Data Pipeline" and "Technology as the Enabler"
+- Added detail about D+1 NLP pipeline using spaCy and DuckDB
+- Changed "Impact & Recognition" to simply "The Results" with concrete metrics
+
+**This Site Project**:
+- Removed philosophical language about "code as expression" and "craftsmanship"
+- Focused on technical rationale: DOM control, performance, semantic HTML, progressive enhancement
+- Explained specific architectural decisions (CSS custom properties, responsive grid, ARIA attributes)
+
+#### Key Patterns to Maintain
+
+1. **Start with the Problem**: Every role/project should begin by explaining what was broken, inefficient, or missing.
+
+2. **Explain the Logic**: Describe why specific technical choices were made, not just what was implemented.
+
+3. **Close with Measurable Impact**: End with concrete outcomes (percentages, timeframes, scale) rather than subjective achievements.
+
+4. **Use Commas for Flow**: Commas create natural pauses and maintain conversational rhythm without the formality of em dashes.
+
+5. **Active, Direct Language**: Prefer active constructions that state what was done and why, avoiding passive voice and indirect framing.
+
+#### Australian English Compliance
+- Conducted final pass to ensure all spelling adhered to AU standards
+- Fixed one inconsistency: "Agile Transformation Program" → "Programme"
+- Verified no US spellings remained in narrative content (JS API calls like `behavior: 'smooth'` are exempt as they're part of Web APIs)
+
+#### CSS Version Management
+- Updated CSS version from 3.9 → 4.0 → 4.1 → 4.2 across refactoring sessions
+- Ensured both about.html and projects.html always use matching version numbers
+- Documented that version should be bumped after any content changes to force cache refresh

@@ -8,7 +8,7 @@ from datetime import datetime
 
 # Paths
 SITE_ROOT = Path("/home/dan/projects/active/resume_website")
-PACK_PATH = Path("/home/dan/projects/active/ai-image-generation")
+PACK_PATH = Path("/home/dan/projects/packs/ai_image_generation")
 PACK_CLI = PACK_PATH / "src/cli/main.py"
 VENV_PYTHON = PACK_PATH / "venv/bin/python3"
 BLOG_HTML_PATH = SITE_ROOT / "blog.html"

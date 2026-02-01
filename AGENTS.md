@@ -109,11 +109,12 @@ npx axe index.html                  # Accessibility testing
 **Tools & Environment**:
 - **Pack Location**: `/home/dan/projects/active/ai-image-generation`
 - **Setup**: Requires a virtual environment (`venv`) with dependencies from `requirements.txt` and an `.env` file with `OPENAI_API_KEY`.
+- **Available Styles**: Always verify available style names with `ls ai_image_system/style_guides/` before generation. Do not assume shorthand versions work (e.g., use `hiromix_style_90s`, not `hiromix`)
 - **Command**: 
-  ```bash
-  source venv/bin/activate
-  python3 src/cli/main.py generate --style [style_name] --scene "[prompt]" --output "/home/dan/projects/active/resume_website" --name "[role_id]"
-  ```
+   ```bash
+   source venv/bin/activate
+   python3 src/cli/main.py generate --style [style_name] --scene "[prompt]" --output "/home/dan/projects/active/resume_website" --name "[role_id]"
+   ```
 
 **Procedure**:
 1. **Generate**: Run the CLI tool from the pack directory to generate PNGs.
@@ -133,8 +134,8 @@ npx axe index.html                  # Accessibility testing
 **Frontmatter Requirements**:
 ```yaml
 title: "Post Title"
-date: "YYYY-MM-DD"
-style: "hiromix" # or any other style guide name
+date: "dd mmm, yyyy"  # IMPORTANT: Use format like "31 Jan, 2026" NOT "2026-01-31"
+style: "hiromix_style_90s" # IMPORTANT: Use full style key from style_guides/ directory, NOT shorthand
 master_image_prompt: "Description for the hover preview image"
 margin_notes:
   - "Note 1"
@@ -506,6 +507,139 @@ Successfully generated and integrated 4 new thematic blog images and 1 replaceme
 - Updated CSS version from 3.9 → 4.0 → 4.1 → 4.2 across refactoring sessions
 - Ensured both about.html and projects.html always use matching version numbers
 - Documented that version should be bumped after any content changes to force cache refresh
+
+## Lessons Learned: Blog Post Creation & Date Format Standardization (2026-02-01)
+
+### Session Overview
+Successfully created "The ultimate kit" blog post from external markdown source, generated AI hover image, and standardized date formats across all blog posts to the cleaner "dd mmm, yyyy" format matching the existing Omarchy post style.
+
+### What Worked Well
+
+#### 1. External Content Integration
+- **Markdown Parsing**: Successfully converted external markdown source (`/home/dan/Documents/Personal/Para/2.Resources/to_be_sorted/The ultimate kit.md`) into properly formatted blog post
+- **Metadata Extraction**: Title, date, and content migration handled cleanly without loss of information
+- **Link Integration**: Successfully linked to existing blog post ("6-months-windows-free") using internal data-post references
+
+#### 2. AI Image Generation & Naming Convention
+- **Batch Processing**: Generated two images for the same post without conflicts
+- **File Normalization**: Established clean naming pattern (`blog-[slug]-master.png`) for all hover preview images
+- **Image Renaming Workflow**: Consistently renamed timestamped generator outputs to clean names without duplication issues
+
+#### 3. Interactive List Integration
+- **Data-Image Attribute**: Correctly paired blog post entries with hover preview images in interactive list
+- **Hover Functionality**: Image display/opacity transitions working as expected with proper data attributes
+
+#### 4. Date Format Standardization
+- **Consistent Migration**: Successfully updated all blog post dates from ISO format (YYYY-MM-DD) to human-readable format (dd mmm, yyyy)
+- **Multi-File Update**: Applied changes across:
+  - blog.html (JavaScript content data)
+  - All markdown frontmatter files (content/posts/*.md)
+- **Format Compliance**: All dates now match Omarchy post style: "31 Jan, 2026"
+
+### Issues Encountered & Solutions
+
+#### Issue 1: Style Guide Name Mismatch
+**Problem**: Referenced `--style hiromix` in documentation and initial generation attempt, but the actual style key was `hiromix_style_90s`
+**Root Cause**: Documentation outdated; style guide filename not checked before use
+**Solution**: Ran `ls ai_image_system/style_guides/` to verify available styles and used correct key
+**Lesson**: **CRITICAL** - Always verify exact style names in `ai_image_system/style_guides/` before running generation. Never assume style names match documentation.
+
+#### Issue 2: Git Merge Conflicts on Remote Changes
+**Problem**: Remote repository had diverged commits (newer content updates to about/projects pages)
+**Root Cause**: User had made changes directly on GitHub between local commits
+**Solution**: Reset to remote master, manually re-applied changes to blog.html to merge cleanly
+**Lesson**: Check remote status with `git log origin/master` before pushing to avoid conflicts. Always pull before pushing when collaborating.
+
+#### Issue 3: Date Format Inconsistency Across Codebase
+**Problem**: Blog posts used three different date formats:
+  - ISO format (YYYY-MM-DD) in frontmatter
+  - ISO format in HTML content (`<em>2026-01-31</em>`)
+  - Human-readable format (dd mmm, yyyy) in Omarchy post
+**Root Cause**: No enforced date format standard in documentation
+**Solution**: Standardized to "dd mmm, yyyy" format in all locations
+**Lesson**: Frontmatter date format and display format should be explicitly documented. Consistency matters for user experience and code maintainability.
+
+#### Issue 4: Image Generation Output Handling
+**Problem**: Generator creates timestamped files (e.g., `blog-the-ultimate-kit-master_20260201_131420_001.png`)
+**Root Cause**: Generator designed for batch processing, includes timestamp for uniqueness
+**Solution**: Consistently rename to clean filename immediately after generation
+**Lesson**: Factor timestamp renaming into the standard workflow. Consider automating this in the generation script or CI pipeline.
+
+### Best Practices Established
+
+#### 1. AI Image Generation Workflow
+```bash
+# Step 1: Verify available styles
+ls /home/dan/projects/active/ai-image-generation/ai_image_system/style_guides/
+
+# Step 2: Use correct style name (NOT the shortened alias)
+--style hiromix_style_90s  # ✅ CORRECT
+--style hiromix            # ❌ WRONG
+
+# Step 3: Generate and rename immediately
+mv blog-[slug]-master_[timestamp]_001.png blog-[slug]-master.png
+```
+
+#### 2. Blog Post Date Format Standard
+All blog post dates must follow: **dd mmm, yyyy** (e.g., "31 Jan, 2026")
+
+**In markdown frontmatter:**
+```yaml
+date: "31 Jan, 2026"  # ✅ CORRECT
+date: "2026-01-31"    # ❌ WRONG
+```
+
+**In blog.html HTML content:**
+```html
+<p><em>31 Jan, 2026</em></p>  # ✅ CORRECT
+<p><em>2026-01-31</em></p>    # ❌ WRONG
+```
+
+#### 3. Style Guide Reference
+When generating images with the AI pack, always use the full style key from the `style_guides/` directory:
+- `hiromix_style_90s` (NOT `hiromix`)
+- `academic_presentation`
+- `cyberpunk_corporate`
+- `film_noir_classic`
+- `infographic_style`
+- `minimalist_product`
+- `technical_diagram`
+- `tech_professional`
+
+Run `ls ai_image_system/style_guides/` to verify current available styles.
+
+#### 4. External Content Migration
+When migrating blog posts from external sources:
+1. Copy raw content to `content/posts/[slug].md`
+2. Add YAML frontmatter with exact structure (title, date in dd mmm yyyy format, style, master_image_prompt, margin_notes)
+3. Convert any reference links to internal data-post references (e.g., `[text](doc.md)` → `<a href="#" data-post="slug">text</a>`)
+4. Generate AI images immediately after markdown creation
+5. Run create_blog.py or manually inject into blog.html
+
+### Critical Warnings
+
+1. **Style Guide Names Are Not Aliases**: The style parameter requires the exact filename from `ai_image_system/style_guides/`. Do not assume shorthand versions will work.
+
+2. **Date Format Consistency**: All blog post dates must be "dd mmm, yyyy" format in both frontmatter AND rendered HTML. Mixing formats breaks the visual consistency of the blog.
+
+3. **Image File Naming**: Always rename generated images with timestamps to clean names immediately. Do not commit timestamped filenames to repository.
+
+4. **Remote Repository Awareness**: Always check `git log origin/master` before pushing. Remote changes can cause merge conflicts.
+
+### Documentation Updates Required
+
+The following documentation sections need updating:
+1. **PAI Workflows § 2. Automated Blog Creation**: Update style name from `"hiromix"` to `"hiromix_style_90s"` in the frontmatter requirements
+2. **PAI Workflows § 2. Automated Blog Creation**: Update date format requirement from `"YYYY-MM-DD"` to `"dd mmm, yyyy"` format
+3. **PAI Workflows § 1. Consistent AI Image Integration**: Add note about verifying style guide names in `ai_image_system/style_guides/`
+
+### Success Metrics
+- ✅ New blog post "The ultimate kit" created and integrated
+- ✅ AI hover image generated with correct style
+- ✅ All blog post dates standardized to "dd mmm, yyyy" format
+- ✅ No broken internal links
+- ✅ Content cleanly migrated from external source
+- ✅ Deployment successful to master branch
 
 
 ## Auto-Injected Context from PAI System

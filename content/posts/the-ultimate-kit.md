@@ -1,6 +1,6 @@
 ---
 title: "The ultimate kit"
-date: "2026-01-31"
+date: "31 Jan, 2026"
 style: "hiromix"
 master_image_prompt: "A minimalist desk setup with a vintage 90s Nokia or flip phone next to a modern laptop, harsh flash photography, high contrast, clean shadows, Hiromix style, no text, lo-fi grain"
 margin_notes:

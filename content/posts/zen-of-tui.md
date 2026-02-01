@@ -1,6 +1,6 @@
 ---
 title: "The Zen of TUI: Why Terminals are the Ultimate Productivity Tool"
-date: "2026-01-24"
+date: "24 Jan, 2026"
 style: "hiromix"
 master_image_prompt: "A high-flash snapshot of a glowing green terminal screen in a dark room, sharp reflections, Hiromix style."
 margin_notes:

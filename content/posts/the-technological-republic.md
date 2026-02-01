@@ -1,6 +1,6 @@
 ---
 title: "The technological republic and why we can't have nice things"
-date: "2026-01-25"
+date: "25 Jan, 2026"
 style: "hiromix"
 master_image_prompt: "A gritty, high-contrast snapshot of a circuit board reflecting a red light, sharp focus, Hiromix style."
 margin_notes:
